@@ -1,0 +1,58 @@
+{
+	"name": "@rbxts/pretty-roact-hooks",
+	"version": "1.0.0",
+	"description": "",
+	"main": "out/init.lua",
+	"scripts": {
+		"build": "rbxtsc",
+		"dev": "rbxtsc -w --type game",
+		"prepublishOnly": "pnpm run build"
+	},
+	"keywords": [
+		"roact",
+		"roblox-ts",
+		"hooks",
+		"hooked"
+	],
+	"author": "littensy",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/littensy/pretty-roact-hooks.git"
+	},
+	"bugs": {
+		"url": "https://github.com/littensy/pretty-roact-hooks/issues"
+	},
+	"types": "out/index.d.ts",
+	"files": [
+		"out",
+		"!**/*.tsbuildinfo"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"devDependencies": {
+		"@rbxts/compiler-types": "2.1.0-types.1",
+		"@rbxts/roact": "1.4.4-ts.0",
+		"@rbxts/roact-hooked": "^2.3.3",
+		"@rbxts/testez": "0.4.2-ts.0",
+		"@rbxts/types": "^1.0.677",
+		"@typescript-eslint/eslint-plugin": "^5.59.0",
+		"@typescript-eslint/parser": "^5.59.0",
+		"eslint": "^8.38.0",
+		"eslint-config-prettier": "^8.8.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"eslint-plugin-roblox-ts": "^0.0.35",
+		"prettier": "^2.8.7",
+		"roblox-ts": "^2.1.0",
+		"typescript": "^5.0.4"
+	},
+	"dependencies": {
+		"@rbxts/services": "^1.5.1",
+		"@rbxts/set-timeout": "^1.0.0"
+	},
+	"peerDependencies": {
+		"@rbxts/roact": "1.4.4-ts.0",
+		"@rbxts/roact-hooked": "^2.3.3"
+	}
+}
