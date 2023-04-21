@@ -6,7 +6,7 @@ function useBindingEffect<T>(binding: T | Roact.Binding<T>, effect: (value: T) =
 
 Subscribes the given effect to binding updates. The effect will be called with the current value of the binding when the component is mounted, and then again whenever the binding updates.
 
-If not passed a valid binding, the effect will be called with the value passed to the hook. In other words, it as a `useEffect` hook if passed a non-binding value.
+If not passed a valid binding, the effect will be called with the value passed to the hook. In other words, it acts as a `useEffect` hook if passed a non-binding value.
 
 The `effect` parameter is safe to not memoize, and will only be called when the binding updates.
 
