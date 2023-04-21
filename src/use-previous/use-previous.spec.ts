@@ -26,7 +26,7 @@ export = () => {
 		expect(result.current).to.equal(2);
 	});
 
-	it("should work with undefined values", () => {
+	it("should return the correct value despite being undefined", () => {
 		const { result, rerender } = renderHook(({ state }) => usePrevious(state), {
 			initialProps: { state: undefined as number | undefined },
 		});
@@ -43,19 +43,30 @@ export = () => {
 		expect(result.current).to.equal(0);
 	});
 
+	it("should not return passed value after unrelated rerender", () => {
+		const { result, rerender } = renderHook(({ state }) => usePrevious(state), {
+			initialProps: { state: 0 },
+		});
+
+		expect(result.current).to.equal(undefined);
+		rerender();
+		expect(result.current).never.to.equal(0);
+		expect(result.current).to.equal(undefined);
+	});
+
 	it("should receive a function that determines whether the value should be updated", () => {
 		const value0 = { value: 0 };
 		const value1 = { value: 1 };
 		const value2 = { value: 2 };
 
-		const { result, rerender } = renderHook(({ state }) => usePrevious(state, (a, b) => a?.value !== b.value), {
+		const { result, rerender } = renderHook(({ state }) => usePrevious(state, (a, b) => a?.value === b.value), {
 			initialProps: { state: value0 },
 		});
 
 		expect(result.current).to.equal(undefined);
 
 		rerender({ state: { ...value0 } });
-		expect(result.current).to.equal(value0);
+		expect(result.current).to.equal(undefined);
 
 		rerender({ state: value1 });
 		expect(result.current).to.equal(value0);

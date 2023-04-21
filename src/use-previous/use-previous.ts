@@ -1,25 +1,32 @@
-import { useEffect, useMutable } from "@rbxts/roact-hooked";
+import { useMemo, useMutable } from "@rbxts/roact-hooked";
 
-export type ShouldUpdate<T> = (a: T | undefined, b: T) => boolean;
+export type Predicate<T> = (a: T | undefined, b: T) => boolean;
 
-const defaultShouldUpdate = <T>(a: T | undefined, b: T) => a !== b;
+const isStrictEqual = (a: unknown, b: unknown) => a === b;
 
 /**
- * Returns the value from the previous render. Returns `undefined` on the first
- * render. Takes an optional function that determines whether the value should
- * be updated.
- * @param value The value to track.
- * @param shouldUpdate A function that determines whether the value should be updated.
- * @returns The value from the previous render.
+ * Returns the most recent value from the previous render. Returns `undefined`
+ * on the first render.
+ *
+ * Takes an optional `predicate` function as the second argument that receives
+ * the previous and current value. If the predicate returns `true`, the newest
+ * value will be returned on the next render.
+ *
+ * @param value The value to return on the next render if it changes.
+ * @param predicate Optional function to determine whether the value changed.
+ * Defaults to a strict equality check (`===`).
+ * @returns The previous value.
  */
-export function usePrevious<T>(value: T, shouldUpdate: ShouldUpdate<T> = defaultShouldUpdate): T | undefined {
-	const prev = useMutable<T>();
+export function usePrevious<T>(value: T, predicate: Predicate<T> = isStrictEqual): T | undefined {
+	const previousRef = useMutable<T>();
+	const currentRef = useMutable<T>();
 
-	useEffect(() => {
-		if (shouldUpdate(prev.current, value)) {
-			prev.current = value;
+	useMemo(() => {
+		if (!predicate(currentRef.current, value)) {
+			previousRef.current = currentRef.current;
+			currentRef.current = value;
 		}
-	});
+	}, [value]);
 
-	return prev.current;
+	return previousRef.current;
 }
