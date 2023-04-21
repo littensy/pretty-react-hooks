@@ -5,12 +5,12 @@ import { renderHook } from "../utils/testez";
 import { useCamera } from "./use-camera";
 
 export = () => {
-	it("should return the current camera", () => {
+	it("should return current camera", () => {
 		const { result } = renderHook(() => useCamera());
 		expect(result.current).to.equal(Workspace.CurrentCamera);
 	});
 
-	it("should update when the current camera changes", () => {
+	it("should update when current camera changes", () => {
 		const { result, rerender } = renderHook(() => useCamera());
 		expect(result.current).to.equal(Workspace.CurrentCamera);
 		Workspace.CurrentCamera?.Destroy();
