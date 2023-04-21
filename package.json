@@ -33,6 +33,7 @@
 	},
 	"devDependencies": {
 		"@rbxts/compiler-types": "2.1.0-types.1",
+		"@rbxts/flipper": "^2.0.1",
 		"@rbxts/roact": "1.4.4-ts.0",
 		"@rbxts/roact-hooked": "^2.3.3",
 		"@rbxts/testez": "0.4.2-ts.0",
@@ -53,6 +54,7 @@
 	},
 	"peerDependencies": {
 		"@rbxts/roact": "1.4.4-ts.0",
-		"@rbxts/roact-hooked": "^2.3.3"
+		"@rbxts/roact-hooked": "^2.3.3",
+		"@rbxts/flipper": "^1.5.1"
 	}
 }

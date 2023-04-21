@@ -12,6 +12,9 @@ devDependencies:
   '@rbxts/compiler-types':
     specifier: 2.1.0-types.1
     version: 2.1.0-types.1
+  '@rbxts/flipper':
+    specifier: ^2.0.1
+    version: 2.0.1
   '@rbxts/roact':
     specifier: 1.4.4-ts.0
     version: 1.4.4-ts.0
@@ -134,6 +137,10 @@ packages:
 
   /@rbxts/compiler-types@2.1.0-types.1:
     resolution: {integrity: sha512-+ztwutzuNivWsgsERiC7n5il4C5gfJUuGJUmXYRq8FwY4ye3aupRi9RocmyAHq6255sO7z+RM61AVbqx3llsLQ==}
+    dev: true
+
+  /@rbxts/flipper@2.0.1:
+    resolution: {integrity: sha512-kxb5AZizP05XSmo3waS/QkcfNMD5b6HX4gGwyHOyBow260R5MIT4L/ZUPLvleXXyb9b67X4NVmHoac1tPXOLNA==}
     dev: true
 
   /@rbxts/roact-hooked@2.3.3(@rbxts/roact@1.4.4-ts.0):

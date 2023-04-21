@@ -1,7 +1,7 @@
 /// <reference types="@rbxts/testez/globals" />
 
 import { Workspace } from "@rbxts/services";
-import { renderHook } from "../utils/testing";
+import { renderHook } from "../utils/testez";
 import { useCamera } from "./use-camera";
 
 export = () => {

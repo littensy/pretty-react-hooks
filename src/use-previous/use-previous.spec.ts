@@ -1,6 +1,6 @@
 /// <reference types="@rbxts/testez/globals" />
 
-import { renderHook } from "../utils/testing";
+import { renderHook } from "../utils/testez";
 import { usePrevious } from "./use-previous";
 
 export = () => {
