@@ -1,5 +1,5 @@
 import Roact from "@rbxts/roact";
-import { useEffect, withHookDetection } from "@rbxts/roact-hooked";
+import { useEffect, useMutable, withHookDetection } from "@rbxts/roact-hooked";
 
 export interface RenderHookResult<Result, Props> {
 	/**
@@ -46,10 +46,12 @@ export function renderHook<Result, Props>(
 ): RenderHookResult<Result, Props> {
 	const result = { current: undefined as Result };
 
-	function TestComponent({ initialProps = {} as Props }: { initialProps?: Props }) {
-		const pendingResult = render(initialProps);
+	function TestComponent({ initialProps }: { initialProps?: Props }) {
+		const previousProps = useMutable(initialProps);
+		const pendingResult = render(initialProps ?? previousProps.current ?? ({} as Props));
 
 		useEffect(() => {
+			previousProps.current = initialProps;
 			result.current = pendingResult;
 		});
 
