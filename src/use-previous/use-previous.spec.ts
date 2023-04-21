@@ -1,89 +1,69 @@
 /// <reference types="@rbxts/testez/globals" />
 
-import { renderHook } from "../utils/render-hook";
-import { ShouldUpdate, usePrevious } from "./use-previous";
+import { renderHook } from "../utils/testing";
+import { usePrevious } from "./use-previous";
 
 export = () => {
-	const getHook = <T>(initialValue: T, shouldUpdate?: ShouldUpdate<T>) => {
-		return renderHook(({ value, shouldUpdate }) => usePrevious(value, shouldUpdate), {
-			initialProps: {
-				value: initialValue,
-				shouldUpdate,
-			} as { value: T; shouldUpdate?: ShouldUpdate<T> },
-		});
-	};
+	it("should return undefined on the first render", () => {
+		const { result } = renderHook(() => usePrevious(0));
+		expect(result.current).to.equal(undefined);
+	});
 
-	describe("usePrevious", () => {
-		it("should return undefined on initial render", () => {
-			const hook = getHook(0);
-			expect(hook.result.current).to.equal(undefined);
+	it("should return the previous value on rerender", () => {
+		const { result, rerender } = renderHook(({ state }) => usePrevious(state), {
+			initialProps: { state: 0 },
 		});
 
-		it("should return the previous value on subsequent renders", () => {
-			const hook = getHook(0);
+		expect(result.current).to.equal(undefined);
 
-			expect(hook.result.current).to.equal(undefined);
+		rerender({ state: 1 });
+		expect(result.current).to.equal(0);
 
-			hook.rerender({ value: 1 });
-			expect(hook.result.current).to.equal(0);
+		rerender({ state: 2 });
+		expect(result.current).to.equal(1);
 
-			hook.rerender({ value: 2 });
-			expect(hook.result.current).to.equal(1);
+		rerender({ state: 3 });
+		expect(result.current).to.equal(2);
+	});
 
-			hook.rerender({ value: 3 });
-			expect(hook.result.current).to.equal(2);
-
-			hook.rerender({ value: 4 });
-			expect(hook.result.current).to.equal(3);
-
-			hook.rerender({ value: 5 });
-			expect(hook.result.current).to.equal(4);
+	it("should work with undefined values", () => {
+		const { result, rerender } = renderHook(({ state }) => usePrevious(state), {
+			initialProps: { state: undefined as number | undefined },
 		});
 
-		it("should not update when shouldUpdate returns false", () => {
-			const hook = getHook(0);
-			expect(hook.result.current).to.equal(undefined);
-			hook.rerender({ value: 1 });
-			expect(hook.result.current).to.equal(0);
-			hook.rerender({ value: 1 });
-			expect(hook.result.current).to.equal(0);
+		expect(result.current).to.equal(undefined);
+
+		rerender({ state: undefined });
+		expect(result.current).to.equal(undefined);
+
+		rerender({ state: 0 });
+		expect(result.current).to.equal(undefined);
+
+		rerender({ state: undefined });
+		expect(result.current).to.equal(0);
+	});
+
+	it("should receive a function that determines whether the value should be updated", () => {
+		const value0 = { value: 0 };
+		const value1 = { value: 1 };
+		const value2 = { value: 2 };
+
+		const { result, rerender } = renderHook(({ state }) => usePrevious(state, (a, b) => a?.value !== b.value), {
+			initialProps: { state: value0 },
 		});
 
-		it("should work with undefined values", () => {
-			const hook = getHook<number | undefined>(undefined);
+		expect(result.current).to.equal(undefined);
 
-			expect(hook.result.current).to.equal(undefined);
+		rerender({ state: { ...value0 } });
+		expect(result.current).to.equal(value0);
 
-			hook.rerender({ value: 1 });
-			expect(hook.result.current).to.equal(undefined);
+		rerender({ state: value1 });
+		expect(result.current).to.equal(value0);
 
-			hook.rerender({ value: undefined });
-			expect(hook.result.current).to.equal(1);
+		rerender({ state: value2 });
+		expect(result.current).to.equal(value1);
 
-			hook.rerender({ value: 2 });
-			expect(hook.result.current).to.equal(undefined);
-		});
-
-		it("should receive a function that determines whether the value should be updated", () => {
-			const hook = getHook<{ value: number }>({ value: 0 }, (a, b) => a?.value !== b.value);
-
-			expect(hook.result.current).to.equal(undefined);
-
-			hook.rerender({ value: { value: 0 } });
-			expect(hook.result.current).to.be.ok();
-			expect(hook.result.current!.value).to.equal(0);
-
-			const value = { value: 1 };
-			hook.rerender({ value: value });
-			expect(hook.result.current).to.be.ok();
-			expect(hook.result.current!.value).to.equal(0);
-
-			hook.rerender({ value: { value: 1 } });
-			expect(hook.result.current).to.equal(value);
-
-			hook.rerender({ value: { value: 2 } });
-			expect(hook.result.current).to.be.ok();
-			expect(hook.result.current!.value).to.equal(1);
-		});
+		rerender({ state: value1 });
+		expect(result.current).to.equal(value2);
 	});
 };
