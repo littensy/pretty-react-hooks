@@ -10,7 +10,9 @@ export function useCamera() {
 
 	useEffect(() => {
 		const connection = Workspace.GetPropertyChangedSignal("CurrentCamera").Connect(() => {
-			setCamera(Workspace.CurrentCamera!);
+			if (Workspace.CurrentCamera) {
+				setCamera(Workspace.CurrentCamera);
+			}
 		});
 
 		return () => connection.Disconnect();
