@@ -12,7 +12,7 @@ import { UseThrottleOptions, useThrottleCallback } from "../use-throttle-callbac
  * @param options The options object.
  * @returns The throttled value.
  */
-export function useThrottle<T>(
+export function useThrottleState<T>(
 	initialState: T,
 	options?: UseThrottleOptions,
 ): LuaTuple<[T, Dispatch<SetStateAction<T>>]> {

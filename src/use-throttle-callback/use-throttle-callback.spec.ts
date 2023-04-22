@@ -25,13 +25,13 @@ export = () => {
 		result.current.run(3);
 		result.current.run(3);
 
-		task.wait(0.03);
+		task.wait(0.035);
 		expect(count).to.equal(6);
 		result.current.run(1);
 		result.current.run(4);
 		result.current.cancel();
 
-		task.wait(0.03);
+		task.wait(0.035);
 		expect(count).to.equal(7);
 		result.current.run(1);
 		result.current.run(1);

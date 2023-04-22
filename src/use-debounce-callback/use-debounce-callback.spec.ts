@@ -4,13 +4,13 @@ import { renderHook } from "../utils/testez";
 import { useDebounceCallback } from "./use-debounce-callback";
 
 export = () => {
-	it("should return run, cancel, and flush", async () => {
+	it("should return run, cancel, and flush", () => {
 		let count = 0;
 		const { result } = renderHook(() => useDebounceCallback((amount: number) => (count += amount), { wait: 0.02 }));
 
-		result.current.run(2);
-		result.current.run(2);
-		result.current.run(2);
+		result.current.run(1);
+		result.current.run(1);
+		result.current.run(4);
 		result.current.run(2);
 		expect(count).to.equal(0);
 
