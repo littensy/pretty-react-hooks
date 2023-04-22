@@ -1,7 +1,7 @@
 /// <reference types="@rbxts/testez/globals" />
 
 import { renderHook } from "../utils/testez";
-import { useMount } from "./use-mount";
+import { useMountEffect } from "./use-mount-effect";
 
 export = () => {
 	it("should run callback on mount", () => {
@@ -9,7 +9,7 @@ export = () => {
 		let mounted = false;
 
 		const { rerender } = renderHook(() => {
-			useMount(() => {
+			useMountEffect(() => {
 				mounted = !mounted;
 			});
 

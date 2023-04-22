@@ -1,7 +1,7 @@
-## 🪝 `useMount`
+## 🪝 `useMountEffect`
 
 ```ts
-function useMount(callback: () => void): void;
+function useMountEffect(callback: () => void): void;
 ```
 
 Runs a callback when the component mounts.
@@ -18,7 +18,7 @@ Runs a callback when the component mounts.
 
 ```tsx
 export default function Component() {
-	useMount(() => {
+	useMountEffect(() => {
 		print("Mounted");
 	});
 
