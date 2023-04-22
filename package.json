@@ -50,11 +50,11 @@
 	},
 	"dependencies": {
 		"@rbxts/services": "^1.5.1",
-		"@rbxts/set-timeout": "^1.0.0"
+		"@rbxts/set-timeout": "^1.1.1"
 	},
 	"peerDependencies": {
+		"@rbxts/flipper": "^1.5.1",
 		"@rbxts/roact": "1.4.4-ts.0",
-		"@rbxts/roact-hooked": "^2.3.3",
-		"@rbxts/flipper": "^1.5.1"
+		"@rbxts/roact-hooked": "^2.3.3"
 	}
 }
