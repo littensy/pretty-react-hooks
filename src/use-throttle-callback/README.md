@@ -33,7 +33,6 @@ Throttle viewport size updates to once per second.
 ```tsx
 export default function Component() {
 	const camera = useCamera();
-
 	const [viewportSize, setViewportSize] = useState(camera.ViewportSize);
 
 	const throttled = useThrottleCallback((size: Vector2) => {
@@ -42,10 +41,6 @@ export default function Component() {
 
 	useEventListener(camera.GetPropertyChangedSignal("ViewportSize"), () => {
 		throttled.run(camera.ViewportSize);
-	});
-
-	useUnmount(() => {
-		throttled.cancel();
 	});
 
 	return <ViewportSize.Provider value={viewportSize} />;

@@ -12,7 +12,7 @@ export interface UseThrottleOptions extends ThrottleOptions {
 }
 
 /**
- * Creates a throttled function that only invokes `callbaack` at most once per
+ * Creates a throttled function that only invokes `callback` at most once per
  * every `wait` seconds. The `callback` is invoked with the most recent arguments
  * provided to the throttled function. Subsequent calls to the throttled function
  * return the result of the last `callback` invocation.

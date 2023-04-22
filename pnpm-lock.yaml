@@ -5,8 +5,8 @@ dependencies:
     specifier: ^1.5.1
     version: 1.5.1
   '@rbxts/set-timeout':
-    specifier: ^1.1.1
-    version: 1.1.1
+    specifier: ^1.1.2
+    version: 1.1.2
 
 devDependencies:
   '@rbxts/compiler-types':
@@ -159,8 +159,8 @@ packages:
     resolution: {integrity: sha512-SRtfIjga0K4YYSXRpK+eH3kcTq7ZXo9OHOt0jszaOOoEOIJloMGlyuRPqesPHyhveh2AMXAZr3TYbRMSD+u+kQ==}
     dev: false
 
-  /@rbxts/set-timeout@1.1.1:
-    resolution: {integrity: sha512-a7OGH99O39TxKa6KLwul5+YIpjVOD22OkIFWWILtmO+vEH7br+sEuNQVs3/BCxNhkHFU45CYAbua40Bb8dmmUQ==}
+  /@rbxts/set-timeout@1.1.2:
+    resolution: {integrity: sha512-P/A0IiH9wuZdSJYr4Us0MDFm61nvIFR0acfKFHLkcOsgvIgELC90Up9ugiSsaMEHRIcIcO5UjE39LuS3xTzQHw==}
     dependencies:
       '@rbxts/services': 1.5.1
     dev: false

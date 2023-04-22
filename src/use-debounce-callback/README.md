@@ -38,10 +38,6 @@ export default function Component() {
 		setQuery(value);
 	}, 1);
 
-	useUnmount(() => {
-		debounced.cancel();
-	});
-
 	return (
 		<textbox
 			Size={new UDim2(1, 0, 0, 30)}

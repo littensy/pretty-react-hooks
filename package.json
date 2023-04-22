@@ -50,7 +50,7 @@
 	},
 	"dependencies": {
 		"@rbxts/services": "^1.5.1",
-		"@rbxts/set-timeout": "^1.1.1"
+		"@rbxts/set-timeout": "^1.1.2"
 	},
 	"peerDependencies": {
 		"@rbxts/flipper": "^1.5.1",
