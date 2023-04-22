@@ -1,6 +1,6 @@
 import { Binding } from "@rbxts/roact";
 import { useState } from "@rbxts/roact-hooked";
-import { useBindingEffect } from "../use-binding-effect";
+import { useBindingListener } from "../use-binding-listener";
 import { getBindingValue } from "../utils/binding";
 
 /**
@@ -11,6 +11,6 @@ import { getBindingValue } from "../utils/binding";
  */
 export function useBindingState<T>(binding: T | Binding<T>): T {
 	const [value, setValue] = useState(() => getBindingValue(binding));
-	useBindingEffect(binding, setValue);
+	useBindingListener(binding, setValue);
 	return value;
 }
