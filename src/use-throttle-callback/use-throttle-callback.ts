@@ -2,7 +2,7 @@ import { useMemo } from "@rbxts/roact-hooked";
 import { Debounced, ThrottleOptions, throttle } from "@rbxts/set-timeout";
 import { UseDebounceResult } from "../use-debounce-callback";
 import { useLatest } from "../use-latest";
-import { useUnmount } from "../use-unmount";
+import { useUnmountEffect } from "../use-unmount-effect";
 
 export interface UseThrottleOptions extends ThrottleOptions {
 	/**
@@ -40,7 +40,7 @@ export function useThrottleCallback<T extends Callback>(
 		);
 	}, []) as Debounced<T>;
 
-	useUnmount(() => {
+	useUnmountEffect(() => {
 		throttled.cancel();
 	});
 

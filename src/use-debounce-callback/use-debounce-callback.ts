@@ -1,7 +1,7 @@
 import { useMemo } from "@rbxts/roact-hooked";
 import { DebounceOptions, Debounced, debounce } from "@rbxts/set-timeout";
 import { useLatest } from "../use-latest";
-import { useUnmount } from "../use-unmount";
+import { useUnmountEffect } from "../use-unmount-effect";
 
 export interface UseDebounceOptions extends DebounceOptions {
 	/**
@@ -59,7 +59,7 @@ export function useDebounceCallback<T extends Callback>(
 		);
 	}, []) as Debounced<T>;
 
-	useUnmount(() => {
+	useUnmountEffect(() => {
 		debounced.cancel();
 	});
 

@@ -1,7 +1,7 @@
-## 🪝 `useUnmount`
+## 🪝 `useUnmountEffect`
 
 ```ts
-function useUnmount(callback: () => void): void;
+function useUnmountEffect(callback: () => void): void;
 ```
 
 Calls the callback when the component unmounts. This is useful for cleaning up side effects.
@@ -18,7 +18,7 @@ Calls the callback when the component unmounts. This is useful for cleaning up s
 
 ```tsx
 export default function Component() {
-	useUnmount(() => {
+	useUnmountEffect(() => {
 		print("Unmounting...");
 	});
 
