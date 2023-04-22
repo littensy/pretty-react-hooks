@@ -1,4 +1,4 @@
-## 🪝 useUnmount
+## 🪝 `useUnmount`
 
 ```ts
 function useUnmount(callback: () => void): void;

@@ -1,4 +1,4 @@
-## 🪝 useDebounceCallback
+## 🪝 `useDebounceCallback`
 
 ```ts
 function useDebounceCallback<T extends Callback>(callback: T, options?: UseDebounceOptions): UseDebounceResult<T>;

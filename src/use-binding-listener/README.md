@@ -1,4 +1,4 @@
-## 🪝 useBindingListener
+## 🪝 `useBindingListener`
 
 ```ts
 function useBindingListener<T>(binding: T | Roact.Binding<T>, listener: (value: T) => void): void;

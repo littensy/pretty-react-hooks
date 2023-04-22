@@ -1,4 +1,4 @@
-## 🪝 useBindingState
+## 🪝 `useBindingState`
 
 ```ts
 function useBindingState<T>(binding: T | Roact.Binding<T>): T;
