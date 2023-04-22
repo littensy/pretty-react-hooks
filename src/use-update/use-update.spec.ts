@@ -20,4 +20,19 @@ export = () => {
 
 		expect(renders).to.equal(2);
 	});
+
+	it("should return a new function on each update", () => {
+		let rerender = () => {};
+		let previousRerender = () => {};
+
+		renderHook(() => {
+			previousRerender = rerender;
+			rerender = useUpdate();
+		});
+
+		expect(rerender).never.to.equal(previousRerender);
+
+		rerender();
+		expect(rerender).never.to.equal(previousRerender);
+	});
 };
