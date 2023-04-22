@@ -1,8 +1,8 @@
 import { useCallback, useMutable } from "@rbxts/roact-hooked";
 
 /**
- * Returns a memoized callback. When passed a new callback, the memoized
- * callback will not change, but calling it will invoke the new callback.
+ * Returns a memoized callback that wraps the latest version of the input
+ * callback.
  * @param callback The callback to memoize.
  * @returns The memoized callback.
  */
