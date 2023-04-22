@@ -1,5 +1,6 @@
 import { Binding } from "@rbxts/roact";
-import { useEffect, useMemo, useMutable } from "@rbxts/roact-hooked";
+import { useEffect, useMemo } from "@rbxts/roact-hooked";
+import { useMemoizedCallback } from "../use-memoized-callback";
 import { getBindingApi, isBinding } from "../utils/binding";
 
 /**
@@ -18,14 +19,14 @@ export function useBindingEffect<T>(binding: T | Binding<T>, effect: (value: T) 
 		return isBinding<T>(binding) ? getBindingApi(binding) : undefined;
 	}, [binding]);
 
-	const effectRef = useMutable(effect);
+	const effectCallback = useMemoizedCallback(effect);
 
 	useEffect(() => {
 		if (api) {
-			effectRef.current(api.getValue());
-			return api.subscribe((value) => effectRef.current(value));
+			effectCallback(api.getValue());
+			return api.subscribe(effectCallback);
 		} else {
-			effectRef.current(binding as T);
+			effectCallback(binding as T);
 		}
 	}, [binding]);
 }

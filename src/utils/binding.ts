@@ -21,6 +21,20 @@ export function isBinding(value: unknown): value is Binding<unknown> {
 }
 
 /**
+ * Returns the value of a binding. If the given value is not a binding, it will
+ * be returned as-is.
+ * @param binding The binding to get the value of.
+ * @returns The value of the binding.
+ */
+export function getBindingValue<T>(binding: T | Binding<T>): T {
+	if (isBinding(binding)) {
+		return binding.getValue();
+	} else {
+		return binding;
+	}
+}
+
+/**
  * Maps a binding to a new binding. If the given value is not a binding, it will
  * be passed to the mapper function and returned as a new binding.
  * @param binding The binding to map.
