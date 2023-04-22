@@ -63,27 +63,28 @@ export function useEventListener<T extends EventLike>(
 	listener?: T extends EventLike<infer U> ? U : never,
 	options: EventListenerOptions = {},
 ) {
+	const { once = false, connected = true } = options;
 	const listenerRef = useLatest(listener);
 
 	useEffect(() => {
-		if (!listener || !options.connected) {
+		if (!listener || !connected) {
 			return;
 		}
 
-		let connected = true;
+		let canDisconnect = true;
 
 		const connection = connect(event, (...args: unknown[]) => {
-			if (options.once) {
+			if (once) {
 				disconnect(connection);
-				connected = false;
+				canDisconnect = false;
 			}
 			listenerRef.current?.(...args);
 		});
 
 		return () => {
-			if (connected) {
+			if (canDisconnect) {
 				disconnect(connection);
 			}
 		};
-	}, [event, options.connected ?? true, listener !== undefined]);
+	}, [event, connected, listener !== undefined]);
 }
