@@ -12,7 +12,7 @@ Connects an event listener to the given event. The event can be any object with 
 
 If the listener is `undefined`, the previous listener will be disconnected.
 
-The `listener` parameter is memoized automatically, and will not cause a reconnect if it changes.
+The `listener` parameter is memoized for you, and will not cause a reconnect if it changes.
 
 ### ⚙️ Options
 

@@ -8,7 +8,7 @@ Subscribes the given listener to binding updates. The listener will be called wi
 
 If not passed a valid binding, the listener will be called with the value passed to the hook.
 
-The `listener` parameter is memoized automatically, and will only be called when the binding updates.
+The `listener` parameter is memoized for you, and will only be called when the binding updates.
 
 ### 📕 Parameters
 
