@@ -17,6 +17,8 @@ export * from "./use-latest";
 export * from "./use-memoized-callback";
 export * from "./use-mount-effect";
 export * from "./use-previous";
+export * from "./use-property";
+export * from "./use-property-binding";
 export * from "./use-throttle-callback";
 export * from "./use-throttle-effect";
 export * from "./use-throttle-state";
