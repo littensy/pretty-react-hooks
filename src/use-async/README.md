@@ -1,7 +1,7 @@
 ## 🪝 `useAsync`
 
 ```ts
-export function useAsync<T>(
+function useAsync<T>(
 	callback: () => Promise<T>,
 	deps: unknown[] = [],
 ): [result?: T, status?: Promise.Status, message?: unknown];

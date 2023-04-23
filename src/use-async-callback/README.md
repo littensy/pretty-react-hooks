@@ -1,7 +1,7 @@
 ## 🪝 `useAsyncCallback`
 
 ```ts
-export function useAsyncCallback<T, U extends unknown[]>(
+function useAsyncCallback<T, U extends unknown[]>(
 	callback: AsyncCallback<T, U>,
 ): LuaTuple<[AsyncState<T>, AsyncCallback<T, U>]>;
 ```
