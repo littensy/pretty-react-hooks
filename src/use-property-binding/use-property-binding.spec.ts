@@ -32,9 +32,9 @@ export = () => {
 			return { binding, events };
 		});
 
-		expect(result.current.binding.getValue()).to.equal(undefined);
+		expect(result.current.binding.getValue()[0]).to.equal(undefined);
 		result.current.events.Size(frame);
-		expect(result.current.binding.getValue()).to.equal(frame.Size);
+		expect(result.current.binding.getValue()[0]).to.equal(frame.Size);
 	});
 
 	it("should set the property to the correct value", () => {
@@ -43,12 +43,12 @@ export = () => {
 			return { binding, events };
 		});
 
-		expect(result.current.binding.getValue()).to.equal(undefined);
+		expect(result.current.binding.getValue()[0]).to.equal(undefined);
 		result.current.events.Size(frame);
-		expect(result.current.binding.getValue()).to.equal(frame.Size);
+		expect(result.current.binding.getValue()[0]).to.equal(frame.Size);
 		frame.Size = new UDim2(1, 0, 1, 0);
 		result.current.events.Size(frame);
-		expect(result.current.binding.getValue()).to.equal(frame.Size);
+		expect(result.current.binding.getValue()[0]).to.equal(frame.Size);
 	});
 
 	it("should receive more than one property", () => {
