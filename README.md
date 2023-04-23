@@ -65,4 +65,4 @@ You will likely need the following extensions:
 
 ## 📝 License
 
-set-timeout is licensed under the [MIT License](LICENSE.md).
+pretty-roact-hooks is licensed under the [MIT License](LICENSE.md).
