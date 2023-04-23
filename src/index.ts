@@ -15,6 +15,7 @@ export * from "./use-camera";
 export * from "./use-debounce-callback";
 export * from "./use-debounce-effect";
 export * from "./use-debounce-state";
+export * from "./use-defer-state";
 export * from "./use-event-listener";
 export * from "./use-interval";
 export * from "./use-key-press";
