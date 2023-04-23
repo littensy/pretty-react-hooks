@@ -1,7 +1,7 @@
-## 🪝 `useMemoizedCallback`
+## 🪝 `useLatestCallback`
 
 ```ts
-function useMemoizedCallback<T extends Callback>(callback: T): T;
+function useLatestCallback<T extends Callback>(callback: T): T;
 ```
 
 Returns a memoized callback that always points to the latest version of the callback.
@@ -24,7 +24,7 @@ interface Props {
 }
 
 function Stepper({ onStep }: Props) {
-	const onStepCallback = useMomoizedCallback(onStep);
+	const onStepCallback = useLatestCallback(onStep);
 
 	useEffect(() => {
 		// Will always call the latest version of `onStep`

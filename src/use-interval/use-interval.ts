@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMutable } from "@rbxts/roact-hooked";
 import { setInterval } from "@rbxts/set-timeout";
-import { useMemoizedCallback } from "../use-memoized-callback";
+import { useLatestCallback } from "../use-latest-callback";
 
 export interface UseIntervalOptions {
 	/**
@@ -22,7 +22,7 @@ export interface UseIntervalOptions {
 export function useInterval(callback: () => void, delay?: number, options: UseIntervalOptions = {}) {
 	const { immediate = false } = options;
 
-	const callbackMemo = useMemoizedCallback(callback);
+	const callbackMemo = useLatestCallback(callback);
 	const cancel = useMutable<() => void>();
 
 	const clear = useCallback(() => {

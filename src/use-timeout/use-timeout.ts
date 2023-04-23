@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMutable } from "@rbxts/roact-hooked";
 import { setTimeout } from "@rbxts/set-timeout";
-import { useMemoizedCallback } from "../use-memoized-callback";
+import { useLatestCallback } from "../use-latest-callback";
 
 /**
  * Sets a timeout that runs the callback function after `delay` seconds. If
@@ -11,7 +11,7 @@ import { useMemoizedCallback } from "../use-memoized-callback";
  * @returns A function that clears the timeout.
  */
 export function useTimeout(callback: () => void, delay?: number) {
-	const callbackMemo = useMemoizedCallback(callback);
+	const callbackMemo = useLatestCallback(callback);
 	const cancel = useMutable<() => void>();
 
 	const clear = useCallback(() => {

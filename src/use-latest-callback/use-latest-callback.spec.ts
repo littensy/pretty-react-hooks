@@ -1,25 +1,25 @@
 /// <reference types="@rbxts/testez/globals" />
 
 import { renderHook } from "../utils/testez";
-import { useMemoizedCallback } from "./use-memoized-callback";
+import { useLatestCallback } from "./use-latest-callback";
 
 export = () => {
 	it("should memoize the callback on mount", () => {
 		const callback = () => {};
-		const { result } = renderHook(() => useMemoizedCallback(callback));
+		const { result } = renderHook(() => useLatestCallback(callback));
 		expect(result.current).to.be.a("function");
 		expect(result.current).never.to.equal(callback);
 	});
 
 	it("should return memoized callback after unrelated rerender", () => {
-		const { result, rerender } = renderHook(() => useMemoizedCallback(() => {}));
+		const { result, rerender } = renderHook(() => useLatestCallback(() => {}));
 		const memoizedCallback = result.current;
 		rerender();
 		expect(result.current).to.equal(memoizedCallback);
 	});
 
 	it("should return memoized callback after passed callback changes", () => {
-		const { result, rerender } = renderHook(({ callback }) => useMemoizedCallback(callback), {
+		const { result, rerender } = renderHook(({ callback }) => useLatestCallback(callback), {
 			initialProps: { callback: () => {} },
 		});
 		const memoizedCallback = result.current;
@@ -29,8 +29,8 @@ export = () => {
 		expect(result.current).to.equal(memoizedCallback);
 	});
 
-	it("should memoize the passed callback", () => {
-		const { result, rerender } = renderHook(({ callback }) => useMemoizedCallback(callback), {
+	it("should memoize new callbacks", () => {
+		const { result, rerender } = renderHook(({ callback }) => useLatestCallback(callback), {
 			initialProps: {
 				callback: (a: number, b: number) => a + b,
 			},

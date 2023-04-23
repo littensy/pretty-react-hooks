@@ -1,6 +1,6 @@
 import { Binding } from "@rbxts/roact";
 import { useEffect, useMemo } from "@rbxts/roact-hooked";
-import { useMemoizedCallback } from "../use-memoized-callback";
+import { useLatestCallback } from "../use-latest-callback";
 import { getBindingApi, isBinding } from "../utils/binding";
 
 /**
@@ -19,7 +19,7 @@ export function useBindingListener<T>(binding: T | Binding<T>, listener: (value:
 		return isBinding<T>(binding) ? getBindingApi(binding) : undefined;
 	}, [binding]);
 
-	const listenerCallback = useMemoizedCallback(listener);
+	const listenerCallback = useLatestCallback(listener);
 
 	useEffect(() => {
 		if (api) {

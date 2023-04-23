@@ -6,7 +6,7 @@ import { useCallback, useMutable } from "@rbxts/roact-hooked";
  * @param callback The callback to memoize.
  * @returns The memoized callback.
  */
-export function useMemoizedCallback<T extends Callback>(callback: T): T {
+export function useLatestCallback<T extends Callback>(callback: T): T {
 	const callbackRef = useMutable(callback);
 	callbackRef.current = callback;
 
