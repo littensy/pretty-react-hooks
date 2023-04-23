@@ -2,7 +2,7 @@
 
 ```ts
 function useEventListener<T extends EventLike>(
-	event: T,
+	event?: T,
 	listener?: T extends EventLike<infer U> ? U : never,
 	options: EventListenerOptions = {},
 ): void;
@@ -10,7 +10,7 @@ function useEventListener<T extends EventLike>(
 
 Connects an event listener to the given event. The event can be any object with a `Connect` method that returns a Connection object or a cleanup function.
 
-If the listener is `undefined`, the previous listener will be disconnected.
+If the event or the listener is `undefined`, the previous listener will be disconnected.
 
 The `listener` parameter is memoized for you, and will not cause a reconnect if it changes.
 

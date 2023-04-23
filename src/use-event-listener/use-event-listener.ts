@@ -48,8 +48,8 @@ const disconnect = (connection: ConnectionLike) => {
  * Subscribes to an event-like object. The subscription is automatically
  * disconnected when the component unmounts.
  *
- * If the listener is `undefined`, the event will not be subscribed to, and the
- * subscription will be disconnected if it was previously connected.
+ * If the event or listener is `undefined`, the event will not be subscribed to,
+ * and the subscription will be disconnected if it was previously connected.
  *
  * The listener is memoized, so it is safe to pass a callback that is recreated
  * on every render.
@@ -59,15 +59,16 @@ const disconnect = (connection: ConnectionLike) => {
  * @param options Options for the subscription.
  */
 export function useEventListener<T extends EventLike>(
-	event: T,
+	event?: T,
 	listener?: T extends EventLike<infer U> ? U : never,
 	options: EventListenerOptions = {},
 ) {
 	const { once = false, connected = true } = options;
+
 	const listenerRef = useLatest(listener);
 
 	useEffect(() => {
-		if (!listener || !connected) {
+		if (!event || !listener || !connected) {
 			return;
 		}
 
