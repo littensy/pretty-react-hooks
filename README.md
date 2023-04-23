@@ -7,6 +7,8 @@
 
 An opinionated collection of useful hooks and utilites for Roblox-TS and [Roact Hooked](https://github.com/littensy/rbxts-roact-hooked/).
 
+Every hook has documentation and tests. If you find a bug or have a feature request, please [open an issue](https://github.com/littensy/pretty-roact-hooks/issues/new/).
+
 &nbsp;
 
 ## ⭐ Featured
@@ -42,6 +44,22 @@ pnpm add @rbxts/pretty-roact-hooks
 pnpm add @rbxts/flipper
 pnpm add @rbxts/roact-hooked
 ```
+
+&nbsp;
+
+## 🌻 Contributing
+
+Contributions are welcome! Note that if you make a change to a hook, you should also check the tests and documentation.
+
+To get started, clone the repository and run `npm install` or `pnpm install`. Then, you can run the following commands:
+
+-   `pnpm dev` - Enable watch mode with the `game` project type
+-   `pnpm build` - Build the package
+
+You will likely need the following extensions:
+
+-   [Rojo VSCode extension](https://marketplace.visualstudio.com/items?itemName=evaera.vscode-rojo)
+-   [TestEZ Companion](https://marketplace.visualstudio.com/items?itemName=tacheometrist.testez-companion)
 
 &nbsp;
 
