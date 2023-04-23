@@ -32,7 +32,7 @@ See [lodash.debounce](https://lodash.com/docs/4.17.15#debounce) for the function
 Update the query after the user stops typing for 1 second.
 
 ```tsx
-export default function Component() {
+function SearchQuery() {
 	const [query, setQuery] = useState("");
 
 	const debounced = useDebounceCallback((value: string) => {

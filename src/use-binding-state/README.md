@@ -23,7 +23,7 @@ interface Props {
 	visible: boolean | Roact.Binding<boolean>;
 }
 
-export default function Component({ visible }: Props) {
+function ToggleFrame({ visible }: Props) {
 	const isVisible = useBindingState(visible);
 
 	useEffect(() => {

@@ -17,10 +17,10 @@ Useful for mapping time to procedural animations and other time-based effects.
 ### 📘 Example
 
 ```tsx
-export default function Component() {
+function Blink() {
 	const lifetime = useLifetime();
-	const flash = lifetime.map((t) => math.sin(t * math.pi) * 0.5 + 0.5);
+	const transparency = lifetime.map((t) => math.sin(t) * 0.5 + 0.5);
 
-	return <frame BackgroundTransparency={flash} />;
+	return <frame BackgroundTransparency={transparency} />;
 }
 ```

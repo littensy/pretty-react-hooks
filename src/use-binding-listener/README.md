@@ -26,7 +26,7 @@ interface Props {
 	transparency: number | Roact.Binding<number>;
 }
 
-export default function Component({ transparency }: Props) {
+function TransparentFrame({ transparency }: Props) {
 	useBindingListener(transparency, (value) => {
 		print("Binding updated to", value);
 	});

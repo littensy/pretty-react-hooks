@@ -24,7 +24,7 @@ The last return value should be passed or spread into the `Change` prop of a com
 ### 📘 Example
 
 ```tsx
-export default function Component() {
+function FrameWatcher() {
 	const [size, position, change] = useProperty("frame", "AbsoluteSize", "AbsolutePosition");
 
 	useEffect(() => {

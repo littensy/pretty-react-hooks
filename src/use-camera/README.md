@@ -15,7 +15,7 @@ Returns the value of `Workspace.CurrentCamera`. If the current camera changes, i
 ### 📘 Example
 
 ```tsx
-export default function Component() {
+function CameraPortal() {
 	const camera = useCamera();
 
 	return <Roact.Portal target={camera} />;

@@ -17,7 +17,7 @@ Runs a callback when the component mounts.
 ### 📘 Example
 
 ```tsx
-export default function Component() {
+function MountLogger() {
 	useMountEffect(() => {
 		print("Mounted");
 	});

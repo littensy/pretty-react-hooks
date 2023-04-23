@@ -24,7 +24,7 @@ The callback is memoized for you and will not reset the timeout if it changes.
 A text label that displays the number `1` after one second.
 
 ```tsx
-export default function Component() {
+function CountOne() {
 	const [count, setCount] = useState(0);
 
 	useTimeout(() => {

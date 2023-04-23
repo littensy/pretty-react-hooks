@@ -23,17 +23,18 @@ interface Props {
 	onStep: () => void;
 }
 
-export default function Component({ onStep }: Props) {
+function Stepper({ onStep }: Props) {
 	const onStepCallback = useMomoizedCallback(onStep);
 
 	useEffect(() => {
+		// Will always call the latest version of `onStep`
 		const connection = RunService.Heartbeat.Connect(onStepCallback);
 
 		return () => {
 			connection.Disconnect();
 		};
-	}, [onStepCallback]);
+	}, []);
 
-	return <frame />;
+	return undefined!;
 }
 ```

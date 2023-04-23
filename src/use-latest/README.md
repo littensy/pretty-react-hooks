@@ -17,7 +17,7 @@ Returns a ref object whose `current` property always points to the latest versio
 ### 📘 Example
 
 ```tsx
-export default function Component() {
+function Counter() {
 	const [value, setValue] = useState(0);
 	const latestValue = useLatest(value);
 
@@ -31,6 +31,13 @@ export default function Component() {
 		};
 	}, []);
 
-	return <frame />;
+	return (
+		<textbutton
+			Text={`Count: ${value}`}
+			Event={{
+				Activated: () => setValue(value + 1),
+			}}
+		/>
+	);
 }
 ```

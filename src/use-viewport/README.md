@@ -19,7 +19,7 @@ If a listener is provided, it will be called when the viewport changes and once 
 ### 📘 Example
 
 ```tsx
-export default function Component() {
+function TextSize() {
 	const viewport = useViewport();
 	const textSize = viewport.map((size) => {
 		return math.min(size.X / 1920, size.Y / 1080) * 14;

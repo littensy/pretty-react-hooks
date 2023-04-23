@@ -17,7 +17,7 @@ Calls the callback when the component unmounts. This is useful for cleaning up s
 ### 📘 Example
 
 ```tsx
-export default function Component() {
+function UnmountLogger() {
 	useUnmountEffect(() => {
 		print("Unmounting...");
 	});

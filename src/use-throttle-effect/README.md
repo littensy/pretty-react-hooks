@@ -30,19 +30,19 @@ See [lodash.throttle](https://lodash.com/docs/4.17.15#throttle) for the function
 Throttle viewport size updates to once per second.
 
 ```tsx
-export default function Component() {
+function ResizeLogger() {
 	const camera = useCamera();
-	const [viewportSize, setViewportSize] = useState(camera.ViewportSize);
+	const [viewport, setViewport] = useState(camera.ViewportSize);
 
 	useEventListener(camera.GetPropertyChangedSignal("ViewportSize"), () => {
-		setViewportSize(camera.ViewportSize);
+		setViewport(camera.ViewportSize);
 	});
 
 	useThrottleEffect(
 		() => {
-			print("Viewport size updated:", viewportSize);
+			print("Viewport size updated:", viewport);
 		},
-		[viewportSize],
+		[viewport],
 		{ time: 1 },
 	);
 

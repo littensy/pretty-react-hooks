@@ -18,7 +18,7 @@ Runs a callback when the component updates. Does not run on mount.
 ### 📘 Example
 
 ```tsx
-export default function Component() {
+function RenderLogger() {
 	const [state, setState] = useState(0);
 
 	useUpdateEffect(() => {

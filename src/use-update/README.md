@@ -17,7 +17,7 @@ The function returned by `useUpdate` is recreated when it causes an update, maki
 ### 📘 Example
 
 ```tsx
-export default function Component() {
+function RenderLogger() {
 	const update = useUpdate();
 
 	useEffect(() => {

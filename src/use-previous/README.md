@@ -20,7 +20,7 @@ It takes an optional inequality function to determine whether the value should b
 ### 📘 Example
 
 ```tsx
-export default function Component({ value }) {
+function ShowPrevious({ value }: Props) {
 	const previousValue = usePrevious(value);
 
 	return <textlabel Text={`${value} (previous: ${previousValue ?? "none"})`} />;

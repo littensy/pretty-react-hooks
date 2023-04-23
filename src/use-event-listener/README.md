@@ -32,7 +32,7 @@ The `listener` parameter is memoized for you, and will not cause a reconnect if 
 ### 📘 Example
 
 ```tsx
-export default function Component() {
+function PlayerJoined() {
 	useEventListener(Players.PlayerAdded, (player) => {
 		print(`${player.DisplayName} joined!`);
 	});

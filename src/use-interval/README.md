@@ -24,7 +24,7 @@ The callback is memoized for you and will not reset the interval if it changes.
 ### 📘 Example
 
 ```tsx
-export default function IntervalExample() {
+function Interval() {
 	const [count, setCount] = useState(0);
 
 	useInterval(() => {

@@ -19,7 +19,7 @@ If a listener is provided, it will be called when the mouse moves and once on mo
 ### 📘 Example
 
 ```tsx
-export default function Component() {
+function MouseTracker() {
 	const mouse = useMouse();
 
 	return (
