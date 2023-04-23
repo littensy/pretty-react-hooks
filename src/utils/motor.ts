@@ -1,16 +1,20 @@
 import { GroupMotor, SingleMotor } from "@rbxts/flipper";
 
+export type GroupMotorValue = { [key: string]: number };
+
+export type MapValues<T extends GroupMotorValue, U> = { [K in keyof T]: U };
+
 export interface MotorState {
 	complete: boolean;
 	value: number;
 	velocity?: number;
 }
 
-export interface SingleMotorExtended extends SingleMotor {
+interface SingleMotorExtended extends SingleMotor {
 	_state: MotorState;
 }
 
-export interface GroupMotorExtended<T> extends GroupMotor<T> {
+interface GroupMotorExtended<T> extends GroupMotor<T> {
 	_motors: Map<keyof T, SingleMotorExtended>;
 }
 
@@ -30,6 +34,7 @@ export function motorGetState(motor: SingleMotor) {
  */
 export function motorSetState(motor: SingleMotor, state: Partial<MotorState>) {
 	const currentState = (motor as SingleMotorExtended)._state;
+
 	for (const [key, value] of pairs(state)) {
 		currentState[key] = value as never;
 	}
@@ -40,11 +45,13 @@ export function motorSetState(motor: SingleMotor, state: Partial<MotorState>) {
  * @param motor The group motor to get the state of
  * @returns The group motor's state
  */
-export function groupMotorGetState<T extends { [key: string]: unknown }>(groupMotor: GroupMotor<T>) {
-	const state = {} as { [K in keyof T]: SingleMotorExtended["_state"] };
+export function groupMotorGetState<T extends GroupMotorValue>(groupMotor: GroupMotor<T>) {
+	const state = {} as MapValues<T, MotorState>;
+
 	for (const [key, motor] of (groupMotor as GroupMotorExtended<T>)._motors) {
 		state[key] = motor._state;
 	}
+
 	return state;
 }
 
@@ -53,14 +60,15 @@ export function groupMotorGetState<T extends { [key: string]: unknown }>(groupMo
  * @param motor The group motor to set the state of
  * @param state The state to set
  */
-export function groupMotorSetState<T extends { [key: string]: unknown }>(
+export function groupMotorSetState<T extends GroupMotorValue>(
 	groupMotor: GroupMotor<T>,
-	states: { [K in keyof T]?: Partial<MotorState> },
+	states: Partial<MapValues<T, Partial<MotorState>>>,
 ) {
 	for (const [key, state] of pairs(states)) {
 		const motor = (groupMotor as GroupMotorExtended<T>)._motors.get(key as keyof T);
+
 		if (motor) {
-			motorSetState(motor, state);
+			motorSetState(motor, state as never);
 		}
 	}
 }
