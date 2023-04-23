@@ -5,6 +5,9 @@ export * from "./utils/testez";
 export * from "./utils/motor";
 export * from "./utils/binding";
 
+export * from "./use-async";
+export * from "./use-async-callback";
+export * from "./use-async-effect";
 export * from "./use-binding-listener";
 export * from "./use-binding-state";
 export * from "./use-camera";
