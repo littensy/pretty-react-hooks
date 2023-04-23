@@ -1,7 +1,7 @@
 ## 🪝 `usePropertyBinding`
 
 ```ts
-function usePropertyBinding<T extends keyof Instances, U extends string[]>(
+function usePropertyBinding<T extends keyof JsxInstances, U extends string[]>(
 	className: T,
 	...propertyNames: U
 ): [Roact.Binding<Properties<T, U>>, ChangeEvents<T, U>];
@@ -25,7 +25,7 @@ The last return value should be passed or spread into the `Change` prop of a com
 
 ```tsx
 export default function Component() {
-	const [binding, change] = useProperty("Frame", "AbsoluteSize", "AbsolutePosition");
+	const [binding, change] = useProperty("frame", "AbsoluteSize", "AbsolutePosition");
 
 	return (
 		<>

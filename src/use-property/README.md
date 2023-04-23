@@ -1,7 +1,7 @@
 ## 🪝 `useProperty`
 
 ```ts
-function useProperty<T extends keyof Instances, U extends string[]>(
+function useProperty<T extends keyof JsxInstances, U extends string[]>(
 	className: T,
 	...propertyNames: U
 ): [...Properties<T, U>, ChangeEvents<T, U>];
@@ -25,7 +25,7 @@ The last return value should be passed or spread into the `Change` prop of a com
 
 ```tsx
 export default function Component() {
-	const [size, position, change] = useProperty("Frame", "AbsoluteSize", "AbsolutePosition");
+	const [size, position, change] = useProperty("frame", "AbsoluteSize", "AbsolutePosition");
 
 	useEffect(() => {
 		print(`New size: ${size}`);
