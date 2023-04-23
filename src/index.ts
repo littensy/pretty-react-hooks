@@ -14,6 +14,7 @@ export * from "./use-debounce-state";
 export * from "./use-event-listener";
 export * from "./use-interval";
 export * from "./use-latest";
+export * from "./use-lifetime";
 export * from "./use-memoized-callback";
 export * from "./use-mount-effect";
 export * from "./use-previous";
