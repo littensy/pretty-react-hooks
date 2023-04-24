@@ -6,8 +6,10 @@ import {
 	MapValues,
 	MotorState,
 	groupMotorGetState,
+	groupMotorImpulse,
 	groupMotorSetState,
 	motorGetState,
+	motorImpulse,
 	motorSetState,
 } from "../utils/motor";
 
@@ -92,11 +94,7 @@ function useSingleMotor(initialValue: number, useImplicitConnections = true) {
 			motor,
 			setState: (state) => motorSetState(motor, state),
 			getState: () => motorGetState(motor),
-			impulse: (impulse) => {
-				motorSetState(motor, {
-					velocity: (motorGetState(motor)?.velocity ?? 0) + impulse,
-				});
-			},
+			impulse: (impulse) => motorImpulse(motor, impulse),
 		};
 	}, []);
 
@@ -127,19 +125,7 @@ function useGroupMotor<T extends GroupMotorValue>(initialValue: T, useImplicitCo
 			motor,
 			setState: (states) => groupMotorSetState(motor, states),
 			getState: () => groupMotorGetState(motor),
-			impulse: (impulses) => {
-				const state = groupMotorGetState(motor);
-				const newState: { [K in keyof T]?: Partial<MotorState> } = {};
-
-				for (const [key, impulse] of pairs(impulses)) {
-					const currentVelocity = state[key as keyof T]?.velocity ?? 0;
-					newState[key as keyof T] = {
-						velocity: currentVelocity + (impulse as number),
-					};
-				}
-
-				groupMotorSetState(motor, newState);
-			},
+			impulse: (impulses) => groupMotorImpulse(motor, impulses),
 		};
 	}, []);
 

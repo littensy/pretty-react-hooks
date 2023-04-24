@@ -41,6 +41,17 @@ export function motorSetState(motor: SingleMotor, state: Partial<MotorState>) {
 }
 
 /**
+ * Applies an impulse to the motor's velocity.
+ * @param motor The motor to apply the impulse to
+ * @param impulse The impulse to apply
+ */
+export function motorImpulse(motor: SingleMotor, impulse: number) {
+	const currentState = (motor as SingleMotorExtended)._state;
+
+	currentState.velocity = (currentState.velocity ?? 0) + impulse;
+}
+
+/**
  * Gets the state of every key in the group motor.
  * @param motor The group motor to get the state of
  * @returns The group motor's state
@@ -69,6 +80,24 @@ export function groupMotorSetState<T extends GroupMotorValue>(
 
 		if (motor) {
 			motorSetState(motor, state as never);
+		}
+	}
+}
+
+/**
+ * Applies impulses to the motor's velocity.
+ * @param motor The group motor to apply the impulses to
+ * @param impulses The impulses to apply
+ */
+export function groupMotorImpulse<T extends GroupMotorValue>(
+	groupMotor: GroupMotor<T>,
+	impulses: { [K in keyof T]?: number },
+) {
+	for (const [key, state] of pairs(impulses)) {
+		const motor = (groupMotor as GroupMotorExtended<T>)._motors.get(key as keyof T);
+
+		if (motor) {
+			motor._state.velocity = (motor._state.velocity ?? 0) + (state as number);
 		}
 	}
 }
