@@ -26,16 +26,16 @@ export = () => {
 			({ delay }) => {
 				useInterval(() => count++, delay);
 			},
-			{ initialProps: { delay: 0.03 as number | undefined } },
+			{ initialProps: { delay: 0.06 as number | undefined } },
 		);
 
 		expect(count).to.equal(0);
 
-		task.wait(0.01);
+		task.wait(0.02);
 		expect(count).to.equal(0);
 		rerender({ delay: undefined });
 
-		task.wait(0.04);
+		task.wait(0.08);
 		expect(count).to.equal(0);
 		unmount();
 	});
@@ -43,16 +43,16 @@ export = () => {
 	it("should clear on unmount", () => {
 		let count = 0;
 		const { unmount } = renderHook(() => {
-			useInterval(() => count++, 0.03);
+			useInterval(() => count++, 0.06);
 		});
 
 		expect(count).to.equal(0);
 
-		task.wait(0.01);
+		task.wait(0.02);
 		expect(count).to.equal(0);
 		unmount();
 
-		task.wait(0.04);
+		task.wait(0.08);
 		expect(count).to.equal(0);
 	});
 
@@ -62,19 +62,19 @@ export = () => {
 			({ delay }) => {
 				useInterval(() => count++, delay);
 			},
-			{ initialProps: { delay: 0.03 as number | undefined } },
+			{ initialProps: { delay: 0.06 as number | undefined } },
 		);
 
 		expect(count).to.equal(0);
 
-		task.wait(0.01);
+		task.wait(0.02);
 		expect(count).to.equal(0);
 		rerender({ delay: 0.05 });
 
-		task.wait(0.04);
+		task.wait(0.08);
 		expect(count).to.equal(0);
 
-		task.wait(0.04);
+		task.wait(0.08);
 		expect(count).to.equal(1);
 		unmount();
 	});
@@ -82,16 +82,16 @@ export = () => {
 	it("should return a clear function", () => {
 		let count = 0;
 		const { result, unmount } = renderHook(() => {
-			return useInterval(() => count++, 0.03);
+			return useInterval(() => count++, 0.06);
 		});
 
 		expect(count).to.equal(0);
 
-		task.wait(0.01);
+		task.wait(0.02);
 		expect(count).to.equal(0);
 		result.current();
 
-		task.wait(0.04);
+		task.wait(0.08);
 		expect(count).to.equal(0);
 		unmount();
 	});
