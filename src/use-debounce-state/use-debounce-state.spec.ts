@@ -17,24 +17,24 @@ export = () => {
 		result.current.setState(1);
 		expect(result.current.state).to.equal(0);
 
-		task.wait(0.03);
+		task.wait(0.04);
 		expect(result.current.state).to.equal(1);
 		result.current.setState(2);
 		expect(result.current.state).to.equal(1);
 
-		task.wait(0.03);
+		task.wait(0.04);
 		expect(result.current.state).to.equal(2);
 		result.current.setState(2);
 		expect(result.current.state).to.equal(2);
 
-		task.wait(0.03);
+		task.wait(0.04);
 		expect(result.current.state).to.equal(2);
 		result.current.setState(3);
 		expect(result.current.state).to.equal(2);
 		result.current.setState(4);
 		expect(result.current.state).to.equal(2);
 
-		task.wait(0.03);
+		task.wait(0.04);
 		expect(result.current.state).to.equal(4);
 
 		unmount();

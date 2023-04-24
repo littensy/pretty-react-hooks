@@ -112,12 +112,12 @@ export = () => {
 
 		expect(result.current.api.motor.getValue()).to.equal(0);
 
-		task.wait(0.03);
+		task.wait(0.04);
 		const value = result.current.api.motor.getValue();
 		expect(value).never.to.equal(0);
 		unmount();
 
-		task.wait(0.03);
+		task.wait(0.04);
 		expect(result.current.api.motor.getValue()).to.equal(value);
 	});
 };

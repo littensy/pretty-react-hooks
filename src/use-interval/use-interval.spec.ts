@@ -15,7 +15,7 @@ export = () => {
 		task.wait(0.04);
 		expect(count).to.equal(1);
 
-		task.wait(0.03);
+		task.wait(0.04);
 		expect(count).to.equal(2);
 		unmount();
 	});
@@ -35,7 +35,7 @@ export = () => {
 		expect(count).to.equal(0);
 		rerender({ delay: undefined });
 
-		task.wait(0.03);
+		task.wait(0.04);
 		expect(count).to.equal(0);
 		unmount();
 	});
@@ -52,7 +52,7 @@ export = () => {
 		expect(count).to.equal(0);
 		unmount();
 
-		task.wait(0.03);
+		task.wait(0.04);
 		expect(count).to.equal(0);
 	});
 
@@ -71,10 +71,10 @@ export = () => {
 		expect(count).to.equal(0);
 		rerender({ delay: 0.05 });
 
-		task.wait(0.03);
+		task.wait(0.04);
 		expect(count).to.equal(0);
 
-		task.wait(0.03);
+		task.wait(0.04);
 		expect(count).to.equal(1);
 		unmount();
 	});
@@ -91,7 +91,7 @@ export = () => {
 		expect(count).to.equal(0);
 		result.current();
 
-		task.wait(0.03);
+		task.wait(0.04);
 		expect(count).to.equal(0);
 		unmount();
 	});

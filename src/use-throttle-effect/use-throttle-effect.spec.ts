@@ -13,7 +13,7 @@ export = () => {
 						count += 1;
 					},
 					[input],
-					{ wait: 0.03 },
+					{ wait: 0.06 },
 				),
 			{ initialProps: { input: 0 } },
 		);
@@ -25,17 +25,17 @@ export = () => {
 		rerender({ input: 1 });
 		expect(count).to.equal(1);
 
-		task.wait(0.02);
+		task.wait(0.04);
 		rerender({ input: 2 });
 		expect(count).to.equal(1);
 
-		task.wait(0.015);
+		task.wait(0.03);
 		rerender({ input: 2 });
 		expect(count).to.equal(2);
 		rerender({ input: 3 });
 		rerender({ input: 3 });
 
-		task.wait(0.035);
+		task.wait(0.065);
 		expect(count).to.equal(3);
 		unmount();
 	});

@@ -49,7 +49,7 @@ export = () => {
 		});
 
 		expect(calls).to.equal(1);
-		task.wait(0.03);
+		task.wait(0.04);
 		expect(calls).to.equal(2);
 	});
 };

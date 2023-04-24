@@ -52,7 +52,7 @@ export = () => {
 		expect(result.current.value).to.never.be.ok();
 		expect(result.current.message).to.never.be.ok();
 
-		task.wait(0.03);
+		task.wait(0.04);
 		expect(completions).to.be.equal(1);
 		expect(result.current.status).to.be.equal(Promise.Status.Resolved);
 		expect(result.current.value).to.be.equal(1);
@@ -69,7 +69,7 @@ export = () => {
 		expect(result.current.value).to.never.be.ok();
 		expect(result.current.message).to.never.be.ok();
 
-		task.wait(0.03);
+		task.wait(0.04);
 		expect(result.current.status).to.be.equal(Promise.Status.Resolved);
 		expect(result.current.value).to.be.equal("foo");
 		expect(result.current.message).to.never.be.ok();
@@ -82,7 +82,7 @@ export = () => {
 		});
 
 		unmount();
-		task.wait(0.03);
+		task.wait(0.04);
 		expect(completions).to.be.equal(0);
 	});
 };

@@ -56,7 +56,7 @@ export = () => {
 		expect(result.current.state.value).to.never.be.ok();
 		expect(result.current.state.message).to.never.be.ok();
 
-		task.wait(0.03);
+		task.wait(0.04);
 		expect(completions).to.be.equal(1);
 		expect(result.current.state.status).to.be.equal(Promise.Status.Resolved);
 		expect(result.current.state.value).to.be.equal(1);
@@ -72,7 +72,7 @@ export = () => {
 
 		result.current.callback();
 		unmount();
-		task.wait(0.03);
+		task.wait(0.04);
 		expect(completions).to.be.equal(0);
 	});
 };
