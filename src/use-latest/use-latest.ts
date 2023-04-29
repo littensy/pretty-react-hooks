@@ -5,8 +5,8 @@ import { Predicate, isStrictEqual } from "../use-previous";
  * Returns a mutable ref that points to the latest value of the input.
  *
  * Takes an optional `predicate` function as the second argument that receives
- * the previous and current value. If the predicate returns `true`, the newest
- * value will be returned on the next render.
+ * the previous and current value. If the predicate returns `false`, the values
+ * are not equal, and the previous value is updated.
  *
  * @param value The value to track.
  * @returns A mutable reference to the value.

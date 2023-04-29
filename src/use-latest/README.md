@@ -1,16 +1,17 @@
 ## 🪝 `useLatest`
 
 ```ts
-function useLatest<T>(value: T, shouldUpdate?: (previous?: T, current: T) => boolean): { current: T };
+function useLatest<T>(value: T, isEqual?: (previous?: T, current: T) => boolean): { current: T };
 ```
 
 Returns a ref object whose `current` property points to the latest version of the value.
 
-It takes an optional inequality function to determine whether the value should be updated.
+It takes an optional equality function to determine whether the values are equal. If false, the value will be updated.
 
 ### 📕 Parameters
 
 -   `value` - The value to wrap in a ref.
+-   `isEqual?` - An equality function. Defaults to a strict equality check (`===`).
 
 ### 📗 Returns
 
