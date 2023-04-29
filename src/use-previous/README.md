@@ -1,7 +1,7 @@
 ## 🪝 `usePrevious`
 
 ```tsx
-function usePrevious<T>(value: T, shouldUpdate?: (prev: T, next: T) => boolean): T | undefined;
+function usePrevious<T>(value: T, shouldUpdate?: (previous?: T, current: T) => boolean): T | undefined;
 ```
 
 Returns a reference to the value from the previous render, or `undefined` on the first render.

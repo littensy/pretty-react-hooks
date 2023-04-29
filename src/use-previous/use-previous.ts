@@ -1,8 +1,8 @@
 import { useMemo, useMutable } from "@rbxts/roact-hooked";
 
-export type Predicate<T> = (a: T | undefined, b: T) => boolean;
+export type Predicate<T> = (previous: T | undefined, current: T) => boolean;
 
-const isStrictEqual = (a: unknown, b: unknown) => a === b;
+export const isStrictEqual = (a: unknown, b: unknown) => a === b;
 
 /**
  * Returns the most recent value from the previous render. Returns `undefined`

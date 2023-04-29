@@ -1,10 +1,12 @@
 ## 🪝 `useLatest`
 
 ```ts
-function useLatest<T>(value: T): { current: T };
+function useLatest<T>(value: T, shouldUpdate?: (previous?: T, current: T) => boolean): { current: T };
 ```
 
-Returns a ref object whose `current` property always points to the latest version of the value.
+Returns a ref object whose `current` property points to the latest version of the value.
+
+It takes an optional inequality function to determine whether the value should be updated.
 
 ### 📕 Parameters
 
