@@ -71,10 +71,10 @@ export = () => {
 		expect(count).to.equal(0);
 		rerender({ delay: 0.05 });
 
-		task.wait(0.08);
+		task.wait(0.02);
 		expect(count).to.equal(0);
 
-		task.wait(0.08);
+		task.wait(0.04);
 		expect(count).to.equal(1);
 		unmount();
 	});
