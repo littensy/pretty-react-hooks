@@ -53,14 +53,11 @@ export function useKeyPress(...keyCodeCombos: KeyCodes[]) {
 		return keySet;
 	}, keyCombos);
 
-	print(keyCombos);
-
 	const keysDown = useMemo(() => {
 		return new Set<KeyCode>();
 	}, keyCodeCombos);
 
 	const updatePressed = () => {
-		print(...keysDown);
 		setPressed(keyCombos.some((keys) => keys.every((key) => keysDown.has(key))));
 	};
 
