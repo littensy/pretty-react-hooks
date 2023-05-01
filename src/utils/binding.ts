@@ -9,6 +9,8 @@ interface BindingApi<T> {
 	getValue: () => T;
 }
 
+export type BindingOrValue<T> = Binding<T> | T;
+
 /**
  * Returns whether the given value is a binding.
  * @param value The value to check.
@@ -18,6 +20,21 @@ export function isBinding<T>(value: T | Binding<T>): value is Binding<T>;
 export function isBinding<T = unknown>(value: unknown): value is Binding<T>;
 export function isBinding(value: unknown): value is Binding<unknown> {
 	return typeIs(value, "table") && "getValue" in value && "map" in value;
+}
+
+/**
+ * Converts a value to a binding. If the given value is already a binding, it
+ * will be returned as-is.
+ * @param value The value to convert.
+ * @returns The converted binding.
+ */
+export function toBinding<T>(value: T | Binding<T>): Binding<T> {
+	if (isBinding(value)) {
+		return value;
+	} else {
+		const [result] = createBinding(value);
+		return result;
+	}
 }
 
 /**
@@ -58,19 +75,15 @@ export function mapBinding<T, U>(binding: T | Binding<T>, callback: (value: T) =
  */
 export function joinAnyBindings<T extends Readonly<Record<string, unknown>>>(
 	bindings: T,
-): Binding<{ [K in keyof T]: T[K] extends Binding<infer U> ? U : T[K] }>;
+): Binding<{ [K in keyof T]: T[K] extends BindingOrValue<infer U> ? U : T[K] }>;
 export function joinAnyBindings<T extends readonly unknown[]>(
 	bindings: T,
-): Binding<{ [K in keyof T]: T[K] extends Binding<infer U> ? U : T[K] }>;
+): Binding<{ [K in keyof T]: T[K] extends BindingOrValue<infer U> ? U : T[K] }>;
 export function joinAnyBindings(bindings: Record<string | number, unknown>): Binding<unknown> {
 	const bindingsToMap = {} as Record<string | number, Binding<unknown>>;
 
 	for (const [k, v] of pairs(bindings)) {
-		if (!isBinding(v)) {
-			bindingsToMap[k] = createBinding(v)[0];
-		} else {
-			bindingsToMap[k] = v;
-		}
+		bindingsToMap[k] = toBinding(v);
 	}
 
 	return joinBindings(bindingsToMap);
