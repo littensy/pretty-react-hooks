@@ -25,37 +25,54 @@ export type KeyCodes = KeyCode | `${KeyCode}+${string}` | KeyCode[];
  * combination, the hook will return `true` if any of the combinations are
  * pressed.
  *
- * @param keyCodes The key code or combination of key codes to listen for.
+ * @param keyCodeCombos The key code or combination of key codes to listen for.
  * @returns Whether the key or combination of keys is pressed.
  */
-export function useKeyPress(...keyCodes: KeyCodes[]) {
+export function useKeyPress(...keyCodeCombos: KeyCodes[]) {
 	const [pressed, setPressed] = useState(false);
 
-	const keys = useMemo(() => {
-		if (typeIs(keyCodes, "string")) {
-			return keyCodes.split("+") as KeyCode[];
-		} else {
-			return keyCodes as KeyCode[];
+	const keyCombos = useMemo(() => {
+		return keyCodeCombos.map((keyCodes): KeyCode[] => {
+			if (typeIs(keyCodes, "string")) {
+				return keyCodes.split("+") as KeyCode[];
+			} else {
+				return keyCodes;
+			}
+		});
+	}, keyCodeCombos);
+
+	const keySet = useMemo(() => {
+		const keySet = new Set<KeyCode>();
+
+		for (const keys of keyCombos) {
+			for (const key of keys) {
+				keySet.add(key);
+			}
 		}
-	}, keyCodes);
+
+		return keySet;
+	}, keyCombos);
+
+	print(keyCombos);
 
 	const keysDown = useMemo(() => {
 		return new Set<KeyCode>();
-	}, keyCodes);
+	}, keyCodeCombos);
 
 	const updatePressed = () => {
-		setPressed(keys.every((key) => keysDown.has(key)));
+		print(...keysDown);
+		setPressed(keyCombos.some((keys) => keys.every((key) => keysDown.has(key))));
 	};
 
 	useEventListener(UserInputService.InputBegan, (input, gameProcessed) => {
-		if (!gameProcessed && keys.includes(input.KeyCode.Name)) {
+		if (!gameProcessed && keySet.has(input.KeyCode.Name)) {
 			keysDown.add(input.KeyCode.Name);
 			updatePressed();
 		}
 	});
 
 	useEventListener(UserInputService.InputEnded, (input) => {
-		if (keys.includes(input.KeyCode.Name)) {
+		if (keySet.has(input.KeyCode.Name)) {
 			keysDown.delete(input.KeyCode.Name);
 			updatePressed();
 		}
