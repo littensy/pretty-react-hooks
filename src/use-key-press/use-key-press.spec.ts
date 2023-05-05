@@ -5,7 +5,7 @@ import { useKeyPress } from "./use-key-press";
 
 export = () => {
 	it("should return a boolean", () => {
-		const { result, unmount } = renderHook(() => useKeyPress("W", "B"));
+		const { result, unmount } = renderHook(() => useKeyPress(["W", "B"]));
 		expect(result.current).to.be.a("boolean");
 		expect(result.current).to.equal(false);
 		unmount();
@@ -14,7 +14,7 @@ export = () => {
 	// itFOCUS("should return true when pressed", () => {
 	// 	let value = false;
 	// 	const { result, unmount } = renderHook(() => {
-	// 		value = useKeyPress("W", "LeftShift+B") || value;
+	// 		value = useKeyPress(["W", "LeftShift+B"]) || value;
 	// 	});
 	// 	task.wait(2);
 	// 	unmount();

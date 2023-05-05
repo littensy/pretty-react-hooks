@@ -1,7 +1,7 @@
 ## 🪝 `useKeyPress`
 
 ```ts
-function useKeyPress(...keyCodes: KeyCodes[]): boolean;
+function useKeyPress(keyCodes: KeyCodes[], options?: KeyPressOptions): boolean;
 ```
 
 Returns `true` if any of the given keys or shortcuts are pressed. The hook expects one or more key codes, which can be:
@@ -15,6 +15,11 @@ Each combination is treated as its own shortcut. If passed more than one key com
 ### 📕 Parameters
 
 -   `keyCodes` - One or more key codes.
+-   `options` - Optional options object.
+    -   `bindAction` - Whether to bind a ContextActionService action to the key press. Defaults to `false`.
+    -   `actionName` - The name of the action to bind. Defaults to a random string.
+    -   `actionPriority` - The priority of the action to bind. Defaults to `Enum.ContextActionPriority.High.Value`.
+    -   `actionInputTypes` - The input types of the action to bind. Defaults to Keyboard and Gamepad1.
 
 ### 📗 Returns
 
@@ -24,8 +29,8 @@ Each combination is treated as its own shortcut. If passed more than one key com
 
 ```tsx
 function Keyboard() {
-	const spacePressed = useKeyPress("Space");
-	const ctrlAPressed = useKeyPress("LeftControl+A", "RightControl+A");
+	const spacePressed = useKeyPress(["Space"]);
+	const ctrlAPressed = useKeyPress(["LeftControl+A", "RightControl+A"]);
 
 	useEffect(() => {
 		print(`Space pressed: ${spacePressed}`);
