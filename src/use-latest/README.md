@@ -24,15 +24,9 @@ function Counter() {
 	const [value, setValue] = useState(0);
 	const latestValue = useLatest(value);
 
-	useEffect(() => {
-		const connection = RunService.Heartbeat.Connect(() => {
-			print(latestValue.current);
-		});
-
-		return () => {
-			connection.Disconnect();
-		};
-	}, []);
+	useEventListener(RunService.Heartbeat, () => {
+		print(latestValue.current);
+	});
 
 	return (
 		<textbutton

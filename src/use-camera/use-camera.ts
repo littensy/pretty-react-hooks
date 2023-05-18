@@ -1,5 +1,6 @@
-import { useEffect, useState } from "@rbxts/roact-hooked";
+import { useState } from "@rbxts/roact-hooked";
 import { Workspace } from "@rbxts/services";
+import { useEventListener } from "../use-event-listener";
 
 /**
  * Returns the current camera. Updates when the current camera changes.
@@ -8,15 +9,11 @@ import { Workspace } from "@rbxts/services";
 export function useCamera() {
 	const [camera, setCamera] = useState(Workspace.CurrentCamera!);
 
-	useEffect(() => {
-		const connection = Workspace.GetPropertyChangedSignal("CurrentCamera").Connect(() => {
-			if (Workspace.CurrentCamera) {
-				setCamera(Workspace.CurrentCamera);
-			}
-		});
-
-		return () => connection.Disconnect();
-	}, []);
+	useEventListener(Workspace.GetPropertyChangedSignal("CurrentCamera"), () => {
+		if (Workspace.CurrentCamera) {
+			setCamera(Workspace.CurrentCamera);
+		}
+	});
 
 	return camera;
 }

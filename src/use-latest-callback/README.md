@@ -28,7 +28,7 @@ function Stepper({ onStep }: Props) {
 
 	useEffect(() => {
 		// Will always call the latest version of `onStep`
-		const connection = RunService.Heartbeat.Connect(onStepCallback);
+		const connection = RunService.RenderStepped.Connect(onStepCallback);
 
 		return () => {
 			connection.Disconnect();

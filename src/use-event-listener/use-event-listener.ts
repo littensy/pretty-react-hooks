@@ -21,7 +21,18 @@ type EventLike<T extends Callback = Callback> =
 type ConnectionLike = { Disconnect(): void } | { disconnect(): void } | (() => void);
 
 const connect = (event: EventLike, callback: Callback): ConnectionLike => {
-	if (typeIs(event, "RBXScriptSignal") || "Connect" in event) {
+	if (typeIs(event, "RBXScriptSignal")) {
+		// With deferred events, a "hard disconnect" is necessary to avoid causing
+		// state updates after a component unmounts. Use 'Connected' to check if
+		// the connection is still valid before invoking the callback.
+		// https://devforum.roblox.com/t/deferred-engine-events/2276564/99
+		const connection = event.Connect((...args: unknown[]) => {
+			if (connection.Connected) {
+				return callback(...args);
+			}
+		});
+		return connection;
+	} else if ("Connect" in event) {
 		return event.Connect(callback);
 	} else if ("connect" in event) {
 		return event.connect(callback);
