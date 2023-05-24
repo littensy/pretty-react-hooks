@@ -8,7 +8,7 @@ function useDeferState<T = undefined>(
 ): [state: T | undefined, setState: Dispatch<SetStateAction<T | undefined>>];
 ```
 
-Like `useState`, but the updater function will defer the update until the next frame. Only the result of the most recent state update will be applied.
+Like `useState`, but the updater function will defer the update until the next Heartbeat frame. Only the result of the most recent state update will be applied.
 
 When passing a function to `setState`, it will receive the most recent value passed to `setState`, so they can be chained.
 
