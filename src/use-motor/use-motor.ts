@@ -1,6 +1,7 @@
 import { GroupMotor, Instant, Linear, SingleMotor, Spring } from "@rbxts/flipper";
 import Roact from "@rbxts/roact";
 import { useBinding, useCallback, useEffect, useMemo } from "@rbxts/roact-hooked";
+import { RunService } from "@rbxts/services";
 import {
 	GroupMotorValue,
 	MapValues,
@@ -86,7 +87,7 @@ export function useMotor(initialValue: number | GroupMotorValue, useImplicitConn
 
 function useSingleMotor(initialValue: number, useImplicitConnections = true) {
 	const motor = useMemo(() => {
-		return new SingleMotor(initialValue, useImplicitConnections);
+		return new SingleMotor(initialValue, false);
 	}, []);
 
 	const api = useMemo<SingleMotorApi>(() => {
@@ -101,12 +102,24 @@ function useSingleMotor(initialValue: number, useImplicitConnections = true) {
 	const [binding, setBinding] = useBinding(initialValue);
 
 	useEffect(() => {
-		motor.onStep(setBinding);
+		if (!useImplicitConnections) {
+			const connection = motor.onStep(setBinding);
+
+			return () => {
+				connection.disconnect();
+			};
+		}
+
+		const connection = RunService.Heartbeat.Connect((deltaTime) => {
+			motor.step(deltaTime);
+			setBinding(motor.getValue());
+		});
 
 		return () => {
+			connection.Disconnect();
 			motor.destroy();
 		};
-	}, []);
+	}, [useImplicitConnections]);
 
 	const setGoal = useCallback((goal: MotorGoal) => {
 		motor.setGoal(goal);
@@ -117,7 +130,7 @@ function useSingleMotor(initialValue: number, useImplicitConnections = true) {
 
 function useGroupMotor<T extends GroupMotorValue>(initialValue: T, useImplicitConnections = true) {
 	const motor = useMemo(() => {
-		return new GroupMotor(initialValue, useImplicitConnections);
+		return new GroupMotor(initialValue, false);
 	}, []);
 
 	const api = useMemo<GroupMotorApi<T>>(() => {
@@ -132,12 +145,24 @@ function useGroupMotor<T extends GroupMotorValue>(initialValue: T, useImplicitCo
 	const [binding, setBinding] = useBinding(initialValue);
 
 	useEffect(() => {
-		motor.onStep(setBinding);
+		if (!useImplicitConnections) {
+			const connection = motor.onStep(setBinding);
+
+			return () => {
+				connection.disconnect();
+			};
+		}
+
+		const connection = RunService.Heartbeat.Connect((deltaTime) => {
+			motor.step(deltaTime);
+			setBinding(motor.getValue());
+		});
 
 		return () => {
+			connection.Disconnect();
 			motor.destroy();
 		};
-	}, []);
+	}, [useImplicitConnections]);
 
 	const setGoal = useCallback((goal: Partial<MapValues<T, MotorGoal>>) => {
 		motor.setGoal(goal as never);
