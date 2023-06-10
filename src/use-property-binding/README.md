@@ -1,31 +1,29 @@
 ## 🪝 `usePropertyBinding`
 
 ```ts
-function usePropertyBinding<T extends keyof JsxInstances, U extends string[]>(
-	className: T,
-	...propertyNames: U
-): [Roact.Binding<Properties<T, U>>, ChangeEvents<T, U>];
+function usePropertyBinding<T extends JsxInstancePropertyName[]>(
+	...propertyNames: T
+): [...JsxInstancePropertyBindings<T>, JsxInstanceChangeEvents<T>];
 ```
 
 Tracks the state of one or more properties for a given instance class. Returns a binding containing an array of the properties in order, and an event container.
 
-The last return value should be passed or spread into the `Change` prop of a component.
+The last return value should be passed or spread into the `Change` prop of an element.
 
 ### 📕 Parameters
 
--   `className` - The name of the class to track properties for.
 -   `...propertyNames` - The names of the properties to track.
 
 ### 📗 Returns
 
--   A binding containing the properties in order. Contains empty array on the first render.
--   An event container, which should be passed to the `Change` prop of a component.
+-   An array of bindings for each property. Binding values will initialize as `undefined`.
+-   An event container, which should be passed to the `Change` prop of an element.
 
 ### 📘 Example
 
 ```tsx
 function FrameFollower() {
-	const [binding, change] = useProperty("frame", "AbsoluteSize", "AbsolutePosition");
+	const [size, position, change] = useProperty("AbsoluteSize", "AbsolutePosition");
 
 	return (
 		<>
@@ -37,8 +35,8 @@ function FrameFollower() {
 			/>
 			<frame
 				AnchorPoint={new Vector2(0.5, 0.5)}
-				Size={binding.map(([size]) => UDim2.fromOffset(size.X, size.Y))}
-				Position={binding.map(([, position]) => UDim2.fromOffset(position.X, position.Y))}
+				Size={size.map((value = Vector2.one) => UDim2.fromOffset(value.X, value.Y))}
+				Position={position.map((value = Vector2.one) => UDim2.fromOffset(value.X, value.Y))}
 			/>
 		</>
 	);

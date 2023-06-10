@@ -17,7 +17,7 @@ export = () => {
 
 	it("should return an events object", () => {
 		const { result } = renderHook(() => {
-			const [size, events] = useProperty("frame", "Size");
+			const [size, events] = useProperty("Size");
 			return { size, events };
 		});
 
@@ -27,7 +27,7 @@ export = () => {
 
 	it("should set the property", () => {
 		const { result } = renderHook(() => {
-			const [size, events] = useProperty("frame", "Size");
+			const [size, events] = useProperty("Size");
 			return { size, events };
 		});
 
@@ -38,7 +38,7 @@ export = () => {
 
 	it("should set the property to the correct value", () => {
 		const { result } = renderHook(() => {
-			const [size, events] = useProperty("frame", "Size");
+			const [size, events] = useProperty("Size");
 			return { size, events };
 		});
 
@@ -52,7 +52,7 @@ export = () => {
 
 	it("should receive more than one property", () => {
 		const { result } = renderHook(() => {
-			const [size, position, events] = useProperty("frame", "Size", "Position");
+			const [size, position, events] = useProperty("Size", "Position");
 			return { size, position, events };
 		});
 
@@ -73,7 +73,7 @@ export = () => {
 
 	it("should support undefined properties", () => {
 		const { result } = renderHook(() => {
-			const [parent, size, events] = useProperty("frame", "Parent", "Size");
+			const [parent, size, events] = useProperty("Parent", "Size");
 			return { parent, size, events };
 		});
 
