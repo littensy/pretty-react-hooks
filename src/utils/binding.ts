@@ -1,12 +1,17 @@
 import { Binding, createBinding, joinBindings } from "@rbxts/roact";
+import { lerp } from "./math";
 
 /**
  * @see https://github.com/Roblox/roact/blob/master/src/Binding.lua
  */
-interface BindingApi<T> {
+export interface BindingApi<T> {
 	subscribe: (callback: (newValue: T) => void) => () => void;
 	update: (newValue: T) => void;
 	getValue: () => T;
+}
+
+export interface Lerpable<T> {
+	Lerp: (this: T, to: T, alpha: number) => T;
 }
 
 export type BindingOrValue<T> = Binding<T> | T;
@@ -101,4 +106,26 @@ export function getBindingApi<T>(binding: Binding<T>) {
 			return v as unknown as BindingApi<T>;
 		}
 	}
+}
+
+/**
+ * Returns a binding that lerps between two values using the given binding as
+ * the alpha.
+ * @param binding The binding to use as the alpha.
+ * @param from The value to lerp from.
+ * @param to The value to lerp to.
+ * @returns A binding that lerps between two values.
+ */
+export function lerpBinding<T extends number | Lerpable<any>>(
+	binding: Binding<number> | number,
+	from: T,
+	to: T,
+): Binding<T> {
+	return mapBinding(binding, (alpha) => {
+		if (typeIs(from, "number")) {
+			return lerp(from, to as number, alpha);
+		} else {
+			return from.Lerp(to, alpha);
+		}
+	});
 }
