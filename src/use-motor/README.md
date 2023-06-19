@@ -61,18 +61,15 @@ function Bounce() {
 	const [offset, setOffset, api] = useMotor({ x: 0, y: 0 });
 
 	const bounce = () => {
+		setOffset({
+			x: new Spring(0, { dampingRatio: 0.4 }),
+			y: new Spring(0, { dampingRatio: 0.4 }),
+		});
 		api.impulse({
 			x: math.random(-50, 50),
 			y: math.random(-50, 50),
 		});
 	};
-
-	useMountEffect(() => {
-		setOffset({
-			x: new Spring(0, { dampingRatio: 0.4 }),
-			y: new Spring(0, { dampingRatio: 0.4 }),
-		});
-	});
 
 	return (
 		<textbutton
