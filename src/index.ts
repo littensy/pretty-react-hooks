@@ -35,6 +35,7 @@ export * from "./use-throttle-callback";
 export * from "./use-throttle-effect";
 export * from "./use-throttle-state";
 export * from "./use-timeout";
+export * from "./use-timer";
 export * from "./use-unmount-effect";
 export * from "./use-update";
 export * from "./use-update-effect";
