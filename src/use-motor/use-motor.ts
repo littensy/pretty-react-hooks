@@ -111,12 +111,18 @@ function useSingleMotor(initialValue: number, useImplicitConnections = true) {
 		}
 
 		const connection = RunService.Heartbeat.Connect((deltaTime) => {
-			motor.step(deltaTime);
+			if (!motor.step(deltaTime)) {
+				setBinding(motor.getValue());
+			}
+		});
+
+		const onComplete = motor.onComplete(() => {
 			setBinding(motor.getValue());
 		});
 
 		return () => {
 			connection.Disconnect();
+			onComplete.disconnect();
 			motor.destroy();
 		};
 	}, [useImplicitConnections]);
@@ -153,13 +159,19 @@ function useGroupMotor<T extends GroupMotorValue>(initialValue: T, useImplicitCo
 			};
 		}
 
-		const connection = RunService.Heartbeat.Connect((deltaTime) => {
-			motor.step(deltaTime);
+		const heartbeat = RunService.Heartbeat.Connect((deltaTime) => {
+			if (!motor.step(deltaTime)) {
+				setBinding(motor.getValue());
+			}
+		});
+
+		const onComplete = motor.onComplete(() => {
 			setBinding(motor.getValue());
 		});
 
 		return () => {
-			connection.Disconnect();
+			heartbeat.Disconnect();
+			onComplete.disconnect();
 			motor.destroy();
 		};
 	}, [useImplicitConnections]);
