@@ -1,4 +1,4 @@
-import { useEffect } from "@rbxts/roact";
+import { useEffect } from "@rbxts/roact-hooked";
 
 /**
  * Runs an async effect and cancels the promise when unmounting the effect.

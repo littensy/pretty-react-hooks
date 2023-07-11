@@ -1,4 +1,4 @@
-import { useMemo, useState } from "@rbxts/roact";
+import { useMemo, useState } from "@rbxts/roact-hooked";
 import { JsxAnyInstanceChangeEvents, JsxAnyInstanceProperties, JsxInstancePropertyName } from "./types";
 
 /**

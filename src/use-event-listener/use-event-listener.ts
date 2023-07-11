@@ -1,4 +1,4 @@
-import { useEffect } from "@rbxts/roact";
+import { useEffect } from "@rbxts/roact-hooked";
 import { useLatest } from "../use-latest";
 
 interface EventListenerOptions {

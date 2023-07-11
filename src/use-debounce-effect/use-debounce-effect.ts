@@ -1,4 +1,4 @@
-import { useEffect } from "@rbxts/roact";
+import { useEffect } from "@rbxts/roact-hooked";
 import { UseDebounceOptions, useDebounceCallback } from "../use-debounce-callback";
 import { useUpdate } from "../use-update";
 import { useUpdateEffect } from "../use-update-effect";

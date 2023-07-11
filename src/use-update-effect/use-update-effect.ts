@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "@rbxts/roact";
+import { useEffect, useMutable } from "@rbxts/roact-hooked";
 
 /**
  * Runs a callback when the component is re-rendered. Does not run on the
@@ -7,7 +7,7 @@ import { useEffect, useRef } from "@rbxts/roact";
  * @param dependencies The dependencies to watch for changes.
  */
 export function useUpdateEffect(effect: () => (() => void) | void, dependencies?: unknown[]) {
-	const isMounted = useRef(false);
+	const isMounted = useMutable(false);
 
 	useEffect(() => {
 		if (isMounted.current) {

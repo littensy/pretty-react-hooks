@@ -1,4 +1,5 @@
-import Roact, { useBinding, useMemo } from "@rbxts/roact";
+import Roact from "@rbxts/roact";
+import { useBinding, useMemo } from "@rbxts/roact-hooked";
 import { UserInputService } from "@rbxts/services";
 import { useEventListener } from "../use-event-listener";
 import { useMountEffect } from "../use-mount-effect";

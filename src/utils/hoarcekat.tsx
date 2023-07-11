@@ -1,5 +1,5 @@
-import { createRoot } from "@rbxts/react-roblox";
-import Roact, { StrictMode } from "@rbxts/roact";
+import Roact from "@rbxts/roact";
+import { HookDetectionOptions, withHookDetection } from "@rbxts/roact-hooked";
 
 /**
  * Returns a function that can be used as a Hoarcekat story. This function will
@@ -9,18 +9,14 @@ import Roact, { StrictMode } from "@rbxts/roact";
  * @param options Optional options to pass to `withHookDetection`.
  * @returns A Hoarcekat story.
  */
-export function hoarcekat(TestComponent: Roact.FunctionComponent) {
+export function hoarcekat(TestComponent: Roact.FunctionComponent, options?: HookDetectionOptions) {
 	return (target: Instance) => {
-		const root = createRoot(target);
+		withHookDetection(Roact, options);
 
-		root.render(
-			<StrictMode>
-				<TestComponent />
-			</StrictMode>,
-		);
+		const handle = Roact.mount(<TestComponent />, target);
 
 		return () => {
-			root.unmount();
+			Roact.unmount(handle);
 		};
 	};
 }

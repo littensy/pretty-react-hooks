@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from "@rbxts/roact";
+import { Dispatch, SetStateAction, useState } from "@rbxts/roact-hooked";
 import { UseDebounceOptions, useDebounceCallback } from "../use-debounce-callback";
 
 /**

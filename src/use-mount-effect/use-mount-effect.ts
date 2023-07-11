@@ -1,4 +1,4 @@
-import { useEffect } from "@rbxts/roact";
+import { useEffect } from "@rbxts/roact-hooked";
 
 /**
  * Runs a callback when the component is mounted.

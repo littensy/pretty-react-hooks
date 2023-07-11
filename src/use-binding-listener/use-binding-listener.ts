@@ -1,4 +1,5 @@
-import { Binding, useEffect, useMemo } from "@rbxts/roact";
+import { Binding } from "@rbxts/roact";
+import { useEffect, useMemo } from "@rbxts/roact-hooked";
 import { useLatestCallback } from "../use-latest-callback";
 import { getBindingApi, isBinding } from "../utils/binding";
 
