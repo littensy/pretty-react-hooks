@@ -16,6 +16,14 @@ export interface Lerpable<T> {
 
 export type BindingOrValue<T> = Binding<T> | T;
 
+type Bindable<T = unknown> = Binding<T> | NonNullable<T>;
+
+type ComposeBindings<T extends Bindable[]> = {
+	[K in keyof T]: T[K] extends Bindable<infer U> ? U : T[K];
+};
+
+type BindingCombiner<T extends Bindable[], U> = (...values: ComposeBindings<T>) => U;
+
 /**
  * Returns whether the given value is a binding.
  * @param value The value to check.
@@ -128,4 +136,21 @@ export function lerpBinding<T extends number | Lerpable<any>>(
 			return from.Lerp(to, alpha);
 		}
 	});
+}
+
+/**
+ * Composes multiple bindings or values together into a single binding.
+ * Calls the combiner function with the values of the bindings when any
+ * of the bindings change.
+ * @param ...bindings A list of bindings or values.
+ * @param combiner The function that maps the bindings to a new value.
+ * @returns A binding that returns the result of the combiner.
+ */
+export function composeBindings<T extends Bindable[], U>(...bindings: [...T, BindingCombiner<T, U>]): Binding<U>;
+
+export function composeBindings<T>(...values: [...Bindable[], BindingCombiner<Bindable[], T>]): Binding<T> {
+	const combiner = values.pop() as BindingCombiner<Bindable[], T>;
+	const bindings = values.map(toBinding);
+
+	return joinBindings(bindings).map((bindings) => combiner(...bindings));
 }
