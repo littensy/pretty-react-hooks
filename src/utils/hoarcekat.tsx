@@ -15,7 +15,7 @@ export function hoarcekat(TestComponent: Roact.FunctionComponent) {
 
 		root.render(
 			<StrictMode>
-				<TestComponent />
+				<TestComponent key="story" />
 			</StrictMode>,
 		);
 
