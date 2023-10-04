@@ -107,6 +107,14 @@
     "@rbxts/luau-polyfill-internal" "1.2.3-ts.0"
     "@rbxts/shared-internal" "^0.2.0"
 
+"@rbxts/react-internal@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@rbxts/react-internal/-/react-internal-0.2.2.tgz#f22dff4725f5d5611553ef396d3138b775206d14"
+  integrity sha512-/34bcOntTzucAwMvo2OtSJT05zfH88kjR0UKyBcADbbZ71KgMKai2Q8ccKKt7IuoPJDzP14dCHd5pXL44M2rkw==
+  dependencies:
+    "@rbxts/luau-polyfill-internal" "1.2.3-ts.0"
+    "@rbxts/shared-internal" "^0.2.1"
+
 "@rbxts/react-reconciler-internal@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@rbxts/react-reconciler-internal/-/react-reconciler-internal-0.2.0.tgz#2313864ff04717d262f52db76230eeb1dc7c8b49"
@@ -118,7 +126,29 @@
     "@rbxts/scheduler-internal" "^0.2.0"
     "@rbxts/shared-internal" "^0.2.0"
 
-"@rbxts/react-roblox@^0.1.0", "@rbxts/react-roblox@^0.1.1":
+"@rbxts/react-reconciler-internal@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@rbxts/react-reconciler-internal/-/react-reconciler-internal-0.2.1.tgz#f612f9ad3e6b946a5ecb84145a3ffcaef4ff4d9e"
+  integrity sha512-+1iF6id3YuhChfJguBFqzDtYvruGFhkLz9Wr8T0ekp7RlGe4l7d7KLUg5l8GRPj9FbmjQFc0UufBHWmKkrJ2qQ==
+  dependencies:
+    "@rbxts/luau-polyfill-internal" "1.2.3-ts.0"
+    "@rbxts/promise-forward" "^1.0.4"
+    "@rbxts/react-internal" "^0.2.2"
+    "@rbxts/scheduler-internal" "^0.2.1"
+    "@rbxts/shared-internal" "^0.2.1"
+
+"@rbxts/react-roblox@*":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@rbxts/react-roblox/-/react-roblox-0.2.0.tgz#a4471617a024225678b96136c17fde761fadba88"
+  integrity sha512-HTdJ7HSVfkyH+ow78paMS4aVz4C87mXEDDeDeQxhw17xQOANFl3cnoSKJ8ldmNgjoSMEgh5KacdoxjRGoF8wZg==
+  dependencies:
+    "@rbxts/luau-polyfill-internal" "1.2.3-ts.0"
+    "@rbxts/react-internal" "^0.2.2"
+    "@rbxts/react-reconciler-internal" "^0.2.1"
+    "@rbxts/scheduler-internal" "^0.2.1"
+    "@rbxts/shared-internal" "^0.2.1"
+
+"@rbxts/react-roblox@^0.1.0":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@rbxts/react-roblox/-/react-roblox-0.1.1.tgz#2a3bb1bb0226f1bd832b71cf422140c87f06edeb"
   integrity sha512-TIViS38pKuJmydW9QhzNwfINkk3lATByEk/7aR3lc/PwiqFBHQA4QVrrl5IspZnRMRvQanrYC9AjZHcYroTK2g==
@@ -155,6 +185,14 @@
     "@rbxts/luau-polyfill-internal" "1.2.3-ts.0"
     "@rbxts/shared-internal" "^0.2.0"
 
+"@rbxts/scheduler-internal@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@rbxts/scheduler-internal/-/scheduler-internal-0.2.1.tgz#ca19075d0d66e1b1044287715409a7183e3f2d98"
+  integrity sha512-9CVi2ZJMH+T4blfDd0t7bScBLWi49eD99eJ3Ie/Cv3WxQ5iYsZLSeSxzut5Yzkb83cYGb/alUGM/gzx0B19KQw==
+  dependencies:
+    "@rbxts/luau-polyfill-internal" "1.2.3-ts.0"
+    "@rbxts/shared-internal" "^0.2.1"
+
 "@rbxts/services@^1.5.1":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@rbxts/services/-/services-1.5.1.tgz#4536a87932f28797507ed591f0061277c52ea77f"
@@ -171,6 +209,13 @@
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@rbxts/shared-internal/-/shared-internal-0.2.0.tgz#7073786da57adb56cc0d1701dad5f970352fd0ff"
   integrity sha512-UG+aOwGH/WhAxtU93KQbfw5L+z05rgDMPMTDd1nlchCo2fezpe5l/r9X3+woFn+s5K2Vhw31HvNpbAH89jsplw==
+  dependencies:
+    "@rbxts/luau-polyfill-internal" "1.2.3-ts.0"
+
+"@rbxts/shared-internal@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@rbxts/shared-internal/-/shared-internal-0.2.1.tgz#8a6b277e85d7b8e027cc6be292889f3e8df3ef67"
+  integrity sha512-HWLFesx5u8NTyDMTNXEkskGT6nE5VLaEnnnq852ixiBtdfIdN/sGCgNnkwbHAq9P9cgX52V3EB5GdVeWcwJzkA==
   dependencies:
     "@rbxts/luau-polyfill-internal" "1.2.3-ts.0"
 
