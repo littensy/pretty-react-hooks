@@ -90,13 +90,13 @@ export function joinAnyBindings<T extends Readonly<Record<string, unknown>>>(
 	bindings: T,
 ): Binding<{ [K in keyof T]: T[K] extends BindingOrValue<infer U> ? U : T[K] }>;
 export function joinAnyBindings<T extends readonly unknown[]>(
-	bindings: T,
+	bindings: readonly [...T],
 ): Binding<{ [K in keyof T]: T[K] extends BindingOrValue<infer U> ? U : T[K] }>;
-export function joinAnyBindings(bindings: Record<string | number, unknown>): Binding<unknown> {
+export function joinAnyBindings(bindings: object): Binding<unknown> {
 	const bindingsToMap = {} as Record<string | number, Binding<unknown>>;
 
 	for (const [k, v] of pairs(bindings)) {
-		bindingsToMap[k] = toBinding(v);
+		bindingsToMap[k as keyof object] = toBinding(v);
 	}
 
 	return joinBindings(bindingsToMap);
