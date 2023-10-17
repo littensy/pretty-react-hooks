@@ -109,9 +109,11 @@ export function joinAnyBindings(bindings: object): Binding<unknown> {
  * @returns The binding's API.
  */
 export function getBindingApi<T>(binding: Binding<T>) {
-	for (const [k, v] of pairs(binding)) {
-		if (tostring(k) === "Symbol(BindingImpl)") {
-			return v as unknown as BindingApi<T>;
+	for (const [key, value] of pairs(binding)) {
+		const name = tostring(key);
+
+		if (name === "Symbol(BindingImpl)" || name.sub(1, 12) === "RoactBinding") {
+			return value as unknown as BindingApi<T>;
 		}
 	}
 }
