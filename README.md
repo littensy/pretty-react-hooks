@@ -44,10 +44,10 @@ pnpm add @rbxts/pretty-react-hooks
 
 Contributions are welcome! Note that if you make a change to a hook, you should also check the tests and documentation.
 
-To get started, clone the repository and run `yarn install`. Then, you can run the following commands:
+To get started, clone the repository and run `pnpm install`. Then, you can run the following commands:
 
--   `yarn dev` - Enable watch mode with the `game` project type
--   `yarn build` - Build the package
+-   `pnpm dev` - Enable watch mode with support for TestEZ Companion
+-   `pnpm build` - Compile the package's `out` directory
 
 You will likely need the following extensions:
 

@@ -14,20 +14,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: GitHub Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
         with:
-          node-version: 18
-          cache: "yarn"
+          version: 8.15.3
 
       - name: Install Dependencies
-        run: yarn
+        run: pnpm install
 
       - name: Run ESLint
-        run: yarn eslint src
+        run: pnpm eslint src
 
       - name: Build & Compile
-        run: yarn build --verbose
+        run: pnpm build --verbose
