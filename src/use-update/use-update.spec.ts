@@ -1,6 +1,6 @@
 /// <reference types="@rbxts/testez/globals" />
 
-import { useEffect } from "@rbxts/roact-hooked";
+import { useEffect } from "@rbxts/react";
 import { renderHook } from "../utils/testez";
 import { useUpdate } from "./use-update";
 

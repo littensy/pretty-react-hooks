@@ -1,4 +1,4 @@
-import { useEffect } from "@rbxts/roact-hooked";
+import { useEffect } from "@rbxts/react";
 import { UseThrottleOptions, useThrottleCallback } from "../use-throttle-callback";
 import { useUpdate } from "../use-update";
 import { useUpdateEffect } from "../use-update-effect";

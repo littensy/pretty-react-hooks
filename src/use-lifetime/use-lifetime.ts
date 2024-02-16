@@ -1,4 +1,4 @@
-import { useBinding, useEffect } from "@rbxts/roact-hooked";
+import { useBinding, useEffect } from "@rbxts/react";
 import { RunService } from "@rbxts/services";
 import { useEventListener } from "../use-event-listener";
 

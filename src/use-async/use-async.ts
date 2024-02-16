@@ -1,4 +1,4 @@
-import { useEffect } from "@rbxts/roact-hooked";
+import { useEffect } from "@rbxts/react";
 import { AsyncState, useAsyncCallback } from "../use-async-callback";
 
 type AsyncStateTuple<T extends AsyncState<unknown>> = LuaTuple<

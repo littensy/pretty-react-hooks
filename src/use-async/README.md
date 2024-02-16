@@ -36,7 +36,7 @@ Changing the dependencies will cancel any pending promises and start a new one.
 ### 📘 Example
 
 ```tsx
-function BaseplatePortal(props: Roact.PropsWithChildren) {
+function BaseplatePortal(props: React.PropsWithChildren) {
 	const [baseplate] = useAsync(async () => {
 		return Workspace.WaitForChild("Baseplate");
 	});
@@ -45,6 +45,6 @@ function BaseplatePortal(props: Roact.PropsWithChildren) {
 		return undefined!;
 	}
 
-	return <Roact.Portal target={baseplate}>{props[Roact.Children]}</Roact.Portal>;
+	return createPortal(props.children, baseplate);
 }
 ```

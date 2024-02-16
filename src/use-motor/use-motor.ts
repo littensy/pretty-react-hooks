@@ -1,6 +1,5 @@
 import { GroupMotor, Instant, Linear, SingleMotor, Spring } from "@rbxts/flipper";
-import Roact from "@rbxts/roact";
-import { useBinding, useCallback, useEffect, useMemo } from "@rbxts/roact-hooked";
+import { Binding, useBinding, useCallback, useEffect, useMemo } from "@rbxts/react";
 import { RunService } from "@rbxts/services";
 import {
 	GroupMotorValue,
@@ -70,12 +69,12 @@ export interface GroupMotorApi<T extends GroupMotorValue = GroupMotorValue> {
 export function useMotor(
 	initialValue: number,
 	useImplicitConnections?: boolean,
-): LuaTuple<[Roact.Binding<number>, (goal: MotorGoal) => void, SingleMotorApi]>;
+): LuaTuple<[Binding<number>, (goal: MotorGoal) => void, SingleMotorApi]>;
 
 export function useMotor<T extends GroupMotorValue>(
 	initialValue: T,
 	useImplicitConnections?: boolean,
-): LuaTuple<[Roact.Binding<T>, (goal: Partial<MapValues<T, MotorGoal>>) => void, GroupMotorApi<T>]>;
+): LuaTuple<[Binding<T>, (goal: Partial<MapValues<T, MotorGoal>>) => void, GroupMotorApi<T>]>;
 
 export function useMotor(initialValue: number | GroupMotorValue, useImplicitConnections = true) {
 	if (typeIs(initialValue, "number")) {

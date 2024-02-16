@@ -1,5 +1,4 @@
-import Roact from "@rbxts/roact";
-import { useBinding, useCallback, useMutable } from "@rbxts/roact-hooked";
+import { Binding, useBinding, useCallback, useRef } from "@rbxts/react";
 import { RunService } from "@rbxts/services";
 import { useEventListener } from "../use-event-listener";
 
@@ -7,7 +6,7 @@ export interface Timer {
 	/**
 	 * A binding that represents the current value of the timer.
 	 */
-	readonly value: Roact.Binding<number>;
+	readonly value: Binding<number>;
 	/**
 	 * Starts the timer if it is not already running.
 	 */
@@ -35,7 +34,7 @@ export interface Timer {
 export function useTimer(initialValue = 0): Timer {
 	const [value, setValue] = useBinding(initialValue);
 
-	const started = useMutable(true);
+	const started = useRef(true);
 
 	useEventListener(RunService.Heartbeat, (deltaTime) => {
 		if (started.current) {

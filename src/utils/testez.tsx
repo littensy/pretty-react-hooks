@@ -1,5 +1,7 @@
-import Roact from "@rbxts/roact";
-import { useEffect, useMutable, withHookDetection } from "@rbxts/roact-hooked";
+_G.__ROACT_17_MOCK_SCHEDULER__ = true;
+
+import React, { useRef } from "@rbxts/react";
+import { act, createLegacyRoot } from "@rbxts/react-roblox";
 
 export interface RenderHookResult<Result, Props> {
 	/**
@@ -47,27 +49,29 @@ export function renderHook<Result, Props>(
 	const result = { current: undefined as Result };
 
 	function TestComponent({ initialProps }: { initialProps?: Props }) {
-		const previousProps = useMutable(initialProps);
+		const previousProps = useRef(initialProps);
 		const pendingResult = render(initialProps ?? previousProps.current ?? ({} as Props));
 
-		useEffect(() => {
-			previousProps.current = initialProps;
-			result.current = pendingResult;
-		});
+		previousProps.current = initialProps;
+		result.current = pendingResult;
 
 		return undefined!;
 	}
 
-	withHookDetection(Roact);
+	const root = createLegacyRoot(options.container || new Instance("Folder"));
 
-	const handle = Roact.mount(<TestComponent initialProps={options.initialProps} />, options.container);
+	act(() => {
+		root.render(<TestComponent initialProps={options.initialProps} />);
+	});
 
 	const rerender = (props?: Props) => {
-		Roact.update(handle, <TestComponent initialProps={props} />);
+		act(() => {
+			root.render(<TestComponent initialProps={props} />);
+		});
 	};
 
 	const unmount = () => {
-		Roact.unmount(handle);
+		act(() => root.unmount());
 	};
 
 	return { rerender, result, unmount };

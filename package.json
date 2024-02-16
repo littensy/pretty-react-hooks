@@ -1,43 +1,41 @@
 {
-	"name": "@rbxts/pretty-roact-hooks",
-	"version": "3.2.1",
-	"description": "",
+	"name": "@rbxts/pretty-react-hooks",
+	"version": "0.4.1",
+	"description": "Useful hooks for @rbxts/react",
 	"main": "out/init.lua",
 	"scripts": {
 		"build": "rbxtsc",
-		"dev": "rbxtsc -w --type game",
-		"prepublishOnly": "pnpm run build"
+		"dev": "rbxtsc -w --type game --rojo test.project.json",
+		"prepublishOnly": "pnpm build"
 	},
 	"keywords": [
 		"roact",
-		"roblox-ts",
-		"hooks",
-		"hooked"
+		"react",
+		"roblox-ts"
 	],
 	"author": "littensy",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/littensy/pretty-roact-hooks.git"
+		"url": "https://github.com/littensy/pretty-react-hooks.git"
 	},
 	"bugs": {
-		"url": "https://github.com/littensy/pretty-roact-hooks/issues"
+		"url": "https://github.com/littensy/pretty-react-hooks/issues"
 	},
 	"types": "out/index.d.ts",
 	"files": [
 		"out",
-		"!**/*.tsbuildinfo"
+		"!**/*.tsbuildinfo",
+		"!**/*.spec.lua",
+		"!**/*.spec.d.ts"
 	],
 	"publishConfig": {
 		"access": "public"
 	},
 	"devDependencies": {
-		"@rbxts/compiler-types": "2.1.0-types.1",
-		"@rbxts/flipper": "^2.0.1",
-		"@rbxts/roact": "1.4.4-ts.0",
-		"@rbxts/roact-hooked": "^2.6.0",
+		"@rbxts/compiler-types": "^2.3.0-types.0",
 		"@rbxts/testez": "0.4.2-ts.0",
-		"@rbxts/types": "^1.0.704",
+		"@rbxts/types": "^1.0.754",
 		"@typescript-eslint/eslint-plugin": "^5.61.0",
 		"@typescript-eslint/parser": "^5.61.0",
 		"eslint": "^8.44.0",
@@ -45,16 +43,14 @@
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-roblox-ts": "^0.0.35",
 		"prettier": "^2.8.8",
-		"roblox-ts": "^2.1.0",
+		"roblox-ts": "2.3.0-dev-4e19cec",
 		"typescript": "^5.1.6"
 	},
 	"dependencies": {
+		"@rbxts/flipper": "^2.0.1",
+		"@rbxts/react": "*",
+		"@rbxts/react-roblox": "*",
 		"@rbxts/services": "^1.5.1",
 		"@rbxts/set-timeout": "^1.1.2"
-	},
-	"peerDependencies": {
-		"@rbxts/flipper": "^2.0.1",
-		"@rbxts/roact": "1.4.4-ts.0",
-		"@rbxts/roact-hooked": "^2.3.3"
 	}
 }

@@ -18,6 +18,6 @@ Returns the value of `Workspace.CurrentCamera`. If the current camera changes, i
 function CameraPortal() {
 	const camera = useCamera();
 
-	return <Roact.Portal target={camera} />;
+	return createPortal(<textlabel Text="Hello, World!" />, camera);
 }
 ```
