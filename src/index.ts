@@ -29,8 +29,6 @@ export * from "./use-motor";
 export * from "./use-mount-effect";
 export * from "./use-mouse";
 export * from "./use-previous";
-export * from "./use-property";
-export * from "./use-property-binding";
 export * from "./use-throttle-callback";
 export * from "./use-throttle-effect";
 export * from "./use-throttle-state";

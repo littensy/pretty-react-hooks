@@ -1,4 +1,4 @@
-import { useCallback, useRef } from "@rbxts/roact";
+import { useCallback, useRef } from "@rbxts/react";
 
 /**
  * Returns a memoized callback that wraps the latest version of the input

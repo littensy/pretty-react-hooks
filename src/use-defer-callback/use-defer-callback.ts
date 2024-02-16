@@ -1,4 +1,4 @@
-import { useCallback, useRef } from "@rbxts/roact";
+import { useCallback, useRef } from "@rbxts/react";
 import { RunService } from "@rbxts/services";
 import { useLatest } from "../use-latest";
 

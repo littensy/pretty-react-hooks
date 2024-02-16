@@ -1,7 +1,7 @@
 ## 🪝 `useBindingListener`
 
 ```ts
-function useBindingListener<T>(binding: T | Roact.Binding<T>, listener: (value: T) => void): void;
+function useBindingListener<T>(binding: T | Binding<T>, listener: (value: T) => void): void;
 ```
 
 Subscribes the given listener to binding updates. The listener will be called with the current value of the binding when the component is mounted, and then again whenever the binding updates.
@@ -23,7 +23,7 @@ The `listener` parameter is memoized for you, and will only be called when the b
 
 ```tsx
 interface Props {
-	transparency: number | Roact.Binding<number>;
+	transparency: number | Binding<number>;
 }
 
 function TransparentFrame({ transparency }: Props) {

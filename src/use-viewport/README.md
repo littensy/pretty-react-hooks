@@ -1,7 +1,7 @@
 ## 🪝 `useViewport`
 
 ```ts
-function useViewport(listener?: (viewport: Vector2) => void): Roact.Binding<Vector2>;
+function useViewport(listener?: (viewport: Vector2) => void): Binding<Vector2>;
 ```
 
 Returns a binding to the size of the viewport.

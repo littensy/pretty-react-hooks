@@ -1,13 +1,13 @@
-## 🌺 [pretty-react-hooks](https://npmjs.com/package/@rbxts/pretty-roact-hooks)
+## 🌺 [pretty-react-hooks](https://npmjs.com/package/@rbxts/pretty-react-hooks)
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/littensy/pretty-roact-hooks/ci.yml?branch=master&style=for-the-badge&logo=github)
-[![npm version](https://img.shields.io/npm/v/@rbxts/pretty-roact-hooks.svg?style=for-the-badge&logo=npm)](https://www.npmjs.com/package/@rbxts/pretty-roact-hooks)
-[![npm downloads](https://img.shields.io/npm/dt/@rbxts/pretty-roact-hooks.svg?style=for-the-badge&logo=npm)](https://www.npmjs.com/package/@rbxts/pretty-roact-hooks)
-[![GitHub license](https://img.shields.io/github/license/littensy/pretty-roact-hooks?style=for-the-badge)](LICENSE.md)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/littensy/pretty-react-hooks/ci.yml?branch=master&style=for-the-badge&logo=github)
+[![npm version](https://img.shields.io/npm/v/@rbxts/pretty-react-hooks.svg?style=for-the-badge&logo=npm)](https://www.npmjs.com/package/@rbxts/pretty-react-hooks)
+[![npm downloads](https://img.shields.io/npm/dt/@rbxts/pretty-react-hooks.svg?style=for-the-badge&logo=npm)](https://www.npmjs.com/package/@rbxts/pretty-react-hooks)
+[![GitHub license](https://img.shields.io/github/license/littensy/pretty-react-hooks?style=for-the-badge)](LICENSE.md)
 
 An opinionated collection of useful hooks and utilites for Roblox-TS and [React TS](https://github.com/littensy/rbxts-react).
 
-If you find a bug or have a feature request, please [open an issue](https://github.com/littensy/pretty-roact-hooks/issues/new/).
+If you find a bug or have a feature request, please [open an issue](https://github.com/littensy/pretty-react-hooks/issues/new/).
 
 &nbsp;
 
@@ -33,13 +33,9 @@ Or, see the [full list of hooks](src/).
 This package is available for Roblox TypeScript projects on [NPM](https://www.npmjs.com/package/@rbxts/pretty-react-hooks).
 
 ```sh
-npm install @rbxts/pretty-react-hooks @rbxts/flipper @rbxts/roact:npm:@rbxts/react-ts
-```
-
-or
-
-```sh
-pnpm add @rbxts/pretty-react-hooks @rbxts/flipper @rbxts/roact:npm:@rbxts/react-ts
+npm install @rbxts/pretty-react-hooks
+yarn add @rbxts/pretty-react-hooks
+pnpm add @rbxts/pretty-react-hooks
 ```
 
 &nbsp;
@@ -48,10 +44,10 @@ pnpm add @rbxts/pretty-react-hooks @rbxts/flipper @rbxts/roact:npm:@rbxts/react-
 
 Contributions are welcome! Note that if you make a change to a hook, you should also check the tests and documentation.
 
-To get started, clone the repository and run `npm install` or `pnpm install`. Then, you can run the following commands:
+To get started, clone the repository and run `yarn install`. Then, you can run the following commands:
 
--   `pnpm dev` - Enable watch mode with the `game` project type
--   `pnpm build` - Build the package
+-   `yarn dev` - Enable watch mode with the `game` project type
+-   `yarn build` - Build the package
 
 You will likely need the following extensions:
 
@@ -62,4 +58,4 @@ You will likely need the following extensions:
 
 ## 📝 License
 
-pretty-roact-hooks is licensed under the [MIT License](LICENSE.md).
+pretty-react-hooks is licensed under the [MIT License](LICENSE.md).

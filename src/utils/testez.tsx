@@ -1,4 +1,7 @@
-import Roact, { useEffect, useRef } from "@rbxts/roact";
+_G.__ROACT_17_MOCK_SCHEDULER__ = true;
+
+import React, { useRef } from "@rbxts/react";
+import { act, createLegacyRoot } from "@rbxts/react-roblox";
 
 export interface RenderHookResult<Result, Props> {
 	/**
@@ -49,22 +52,26 @@ export function renderHook<Result, Props>(
 		const previousProps = useRef(initialProps);
 		const pendingResult = render(initialProps ?? previousProps.current ?? ({} as Props));
 
-		useEffect(() => {
-			previousProps.current = initialProps;
-			result.current = pendingResult;
-		});
+		previousProps.current = initialProps;
+		result.current = pendingResult;
 
 		return undefined!;
 	}
 
-	const handle = Roact.mount(<TestComponent initialProps={options.initialProps} />, options.container);
+	const root = createLegacyRoot(options.container || new Instance("Folder"));
+
+	act(() => {
+		root.render(<TestComponent initialProps={options.initialProps} />);
+	});
 
 	const rerender = (props?: Props) => {
-		Roact.update(handle, <TestComponent initialProps={props} />);
+		act(() => {
+			root.render(<TestComponent initialProps={props} />);
+		});
 	};
 
 	const unmount = () => {
-		Roact.unmount(handle);
+		act(() => root.unmount());
 	};
 
 	return { rerender, result, unmount };

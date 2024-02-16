@@ -1,4 +1,4 @@
-import { useMemo } from "@rbxts/roact";
+import { useMemo } from "@rbxts/react";
 import { Debounced, ThrottleOptions, throttle } from "@rbxts/set-timeout";
 import { UseDebounceResult } from "../use-debounce-callback";
 import { useLatest } from "../use-latest";

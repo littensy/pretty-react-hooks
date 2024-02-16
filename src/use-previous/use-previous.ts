@@ -1,4 +1,4 @@
-import { useMemo, useRef } from "@rbxts/roact";
+import { useMemo, useRef } from "@rbxts/react";
 
 export type Predicate<T> = (previous: T | undefined, current: T) => boolean;
 

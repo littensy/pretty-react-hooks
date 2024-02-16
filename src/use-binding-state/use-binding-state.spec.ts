@@ -1,6 +1,6 @@
 /// <reference types="@rbxts/testez/globals" />
 
-import { createBinding } from "@rbxts/roact";
+import { createBinding } from "@rbxts/react";
 import { renderHook } from "../utils/testez";
 import { useBindingState } from "./use-binding-state";
 

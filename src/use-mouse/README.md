@@ -1,7 +1,7 @@
 ## 🪝 `useMouse`
 
 ```ts
-function useMouse(listener?: (mouse: Vector2) => void): Roact.Binding<Vector2>;
+function useMouse(listener?: (mouse: Vector2) => void): Binding<Vector2>;
 ```
 
 Returns a binding to the position of the mouse.

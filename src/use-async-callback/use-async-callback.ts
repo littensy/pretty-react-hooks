@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "@rbxts/roact";
+import { useCallback, useRef, useState } from "@rbxts/react";
 import { useUnmountEffect } from "../use-unmount-effect";
 
 export type AsyncState<T> =

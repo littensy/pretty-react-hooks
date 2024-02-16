@@ -1,4 +1,4 @@
-import { Binding, useState } from "@rbxts/roact";
+import { Binding, useState } from "@rbxts/react";
 import { useBindingListener } from "../use-binding-listener";
 import { getBindingValue } from "../utils/binding";
 

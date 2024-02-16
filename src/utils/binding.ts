@@ -1,9 +1,6 @@
-import { Binding, createBinding, joinBindings } from "@rbxts/roact";
+import { Binding, createBinding, joinBindings } from "@rbxts/react";
 import { lerp } from "./math";
 
-/**
- * @see https://github.com/Roblox/roact/blob/master/src/Binding.lua
- */
 export interface BindingApi<T> {
 	subscribe: (callback: (newValue: T) => void) => () => void;
 	update: (newValue: T) => void;
@@ -104,7 +101,7 @@ export function joinAnyBindings(bindings: object): Binding<unknown> {
 
 /**
  * Gets the internal API of a binding. This is a hacky way to get access to the
- * `BindingInternalApi` object of a binding, which is not exposed by Roact.
+ * `BindingInternalApi` object of a binding, which is not exposed by React.
  * @param binding The binding to get the internal API of.
  * @returns The binding's API.
  */

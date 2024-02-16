@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "@rbxts/roact";
+import { useEffect, useRef } from "@rbxts/react";
 
 /**
  * Runs a callback when the component is re-rendered. Does not run on the

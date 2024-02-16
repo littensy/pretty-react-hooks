@@ -4,12 +4,12 @@
 function useMotor(
 	initialValue: number,
 	useImplicitConnections = true,
-): [value: Roact.Binding<number>, setGoal: (goal: MotorGoal) => void, api: SingleMotorApi];
+): [value: Binding<number>, setGoal: (goal: MotorGoal) => void, api: SingleMotorApi];
 
 function useMotor<T>(
 	initialValue: T,
 	useImplicitConnections = true,
-): [value: Roact.Binding<T>, setGoal: (goal: GroupMotorGoal<T>) => void, api: GroupMotorApi<T>];
+): [value: Binding<T>, setGoal: (goal: GroupMotorGoal<T>) => void, api: GroupMotorApi<T>];
 ```
 
 Creates a motor and returns a binding, a function to set the goal, and a motor API. Whether it creates a `SingleMotor` or a `GroupMotor` depends on the type of `initialValue`.

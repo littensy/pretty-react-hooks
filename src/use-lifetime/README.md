@@ -1,7 +1,7 @@
 ## 🪝 `useLifetime`
 
 ```ts
-function useLifetime(dependencies?: unknown[]): Roact.Binding<number>;
+function useLifetime(dependencies?: unknown[]): Binding<number>;
 ```
 
 Returns the amount of time that has passed since the component mounted. The binding is updated every frame on Heartbeat.

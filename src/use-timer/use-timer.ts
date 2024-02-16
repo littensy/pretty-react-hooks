@@ -1,4 +1,4 @@
-import Roact, { useBinding, useCallback, useRef } from "@rbxts/roact";
+import { Binding, useBinding, useCallback, useRef } from "@rbxts/react";
 import { RunService } from "@rbxts/services";
 import { useEventListener } from "../use-event-listener";
 
@@ -6,7 +6,7 @@ export interface Timer {
 	/**
 	 * A binding that represents the current value of the timer.
 	 */
-	readonly value: Roact.Binding<number>;
+	readonly value: Binding<number>;
 	/**
 	 * Starts the timer if it is not already running.
 	 */
