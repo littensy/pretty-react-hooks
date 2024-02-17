@@ -5,7 +5,7 @@
 [![npm downloads](https://img.shields.io/npm/dt/@rbxts/pretty-react-hooks.svg?style=for-the-badge&logo=npm)](https://www.npmjs.com/package/@rbxts/pretty-react-hooks)
 [![GitHub license](https://img.shields.io/github/license/littensy/pretty-react-hooks?style=for-the-badge)](LICENSE.md)
 
-An opinionated collection of useful hooks and utilites for Roblox-TS and [React TS](https://github.com/littensy/rbxts-react).
+An opinionated collection of useful hooks and utilites for [React](https://github.com/littensy/rbxts-react) in [roblox-ts](https://roblox-ts.com).
 
 If you find a bug or have a feature request, please [open an issue](https://github.com/littensy/pretty-react-hooks/issues/new/).
 
