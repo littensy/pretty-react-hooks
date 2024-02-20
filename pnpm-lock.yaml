@@ -8,14 +8,8 @@ dependencies:
   '@rbxts/flipper':
     specifier: ^2.0.1
     version: 2.0.1
-  '@rbxts/react':
-    specifier: '*'
-    version: 0.1.0
-  '@rbxts/react-roblox':
-    specifier: '*'
-    version: 0.3.0
   '@rbxts/services':
-    specifier: ^1.5.1
+    specifier: ^1.5.4
     version: 1.5.4
   '@rbxts/set-timeout':
     specifier: ^1.1.2
@@ -23,8 +17,14 @@ dependencies:
 
 devDependencies:
   '@rbxts/compiler-types':
-    specifier: ^2.3.0-types.0
+    specifier: 2.3.0-types.0
     version: 2.3.0-types.0
+  '@rbxts/react':
+    specifier: ^0.3.1
+    version: 0.3.1
+  '@rbxts/react-roblox':
+    specifier: ^0.3.1
+    version: 0.3.1
   '@rbxts/testez':
     specifier: 0.4.2-ts.0
     version: 0.4.2-ts.0
@@ -32,16 +32,16 @@ devDependencies:
     specifier: ^1.0.754
     version: 1.0.754
   '@typescript-eslint/eslint-plugin':
-    specifier: ^5.61.0
+    specifier: ^5.62.0
     version: 5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.56.0)(typescript@5.3.3)
   '@typescript-eslint/parser':
-    specifier: ^5.61.0
+    specifier: ^5.62.0
     version: 5.62.0(eslint@8.56.0)(typescript@5.3.3)
   eslint:
-    specifier: ^8.44.0
+    specifier: ^8.56.0
     version: 8.56.0
   eslint-config-prettier:
-    specifier: ^8.8.0
+    specifier: ^8.10.0
     version: 8.10.0(eslint@8.56.0)
   eslint-plugin-prettier:
     specifier: ^4.2.1
@@ -56,7 +56,7 @@ devDependencies:
     specifier: 2.3.0-dev-4e19cec
     version: 2.3.0-dev-4e19cec
   typescript:
-    specifier: ^5.1.6
+    specifier: ^5.3.3
     version: 5.3.3
 
 packages:
@@ -152,22 +152,22 @@ packages:
     resolution: {integrity: sha512-kxb5AZizP05XSmo3waS/QkcfNMD5b6HX4gGwyHOyBow260R5MIT4L/ZUPLvleXXyb9b67X4NVmHoac1tPXOLNA==}
     dev: false
 
-  /@rbxts/react-roblox@0.3.0:
-    resolution: {integrity: sha512-0ruOooECX6sL0fqliF6whhVHuM4HDuVlAaVjObQOI13foORtcRnmlfwLYFIWFtE5NbepuQjNcThhqx85yohlDw==}
+  /@rbxts/react-roblox@0.3.1:
+    resolution: {integrity: sha512-88vhRXdOaYijmHHTBwU71NZBrJ697zrpgiuM6443t40PfPevbnhRW7m838eliL4decY4VEZrFp+Z4k+nDEgxXg==}
     dependencies:
-      '@rbxts/react': 0.1.0
-      '@rbxts/react-vendor': 0.1.0
-    dev: false
+      '@rbxts/react': 0.3.1
+      '@rbxts/react-vendor': 0.3.1
+    dev: true
 
-  /@rbxts/react-vendor@0.1.0:
-    resolution: {integrity: sha512-RGyKA2djMy5snBMCf6iKFdtm77rkrJuLU8ysGtMcBnqz2Jip6oDAwIpMXIqcGplCPXO+83iLuIs55eefp9qa7A==}
-    dev: false
+  /@rbxts/react-vendor@0.3.1:
+    resolution: {integrity: sha512-5oYc5SkvNCkOrD6uqVoqVmjlR2FgCPlhHasqgPEHbE0qurrCDF8PKvVT9r0gi8VFHLVSp9Hj9BG2WNifDt6Yew==}
+    dev: true
 
-  /@rbxts/react@0.1.0:
-    resolution: {integrity: sha512-DspPC4jtgk2qK4xSYNBaAjtJUL6BjQcw/T4lu4AwLWPDhJHhsgmUNMyQ9s7Bq3MrC8z3UVwUXKZPK8CJsDWLEg==}
+  /@rbxts/react@0.3.1:
+    resolution: {integrity: sha512-J+PhKiDABBMC+hrOvqDiOSS6GhWqulizl9tSRG8ezZxNYsuoMGnShJvhDounPyTGl0ikjy3l2BRIKqy+xregzA==}
     dependencies:
-      '@rbxts/react-vendor': 0.1.0
-    dev: false
+      '@rbxts/react-vendor': 0.3.1
+    dev: true
 
   /@rbxts/services@1.5.4:
     resolution: {integrity: sha512-Klh+gRIT8zy3xRTX1YD6FZ9nAMzkzPLTHmciigt59PEF7PJXo31CF0IU0RegQ7VSMrz1iOnXwxbIwy3htcMfOA==}
