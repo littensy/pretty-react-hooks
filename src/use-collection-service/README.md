@@ -21,15 +21,15 @@ Get all `Instance` with the tag `"Zombie"`:
 
 ```tsx
 function ZombieHealth() {
-	const zombies = useCollectionService("Zombie")
+    const zombies = useCollectionService("Zombie")
 
-	return (
-		{
+    return (
+        {
             zombies.map((zombie) =>
                 <ZombieHealthbar model={zombie} />
             )
         }
-	);
+    );
 }
 ```
 
@@ -41,14 +41,14 @@ interface ZombieModel extends Model {
 }
 
 function ZombieHealth() {
-	const zombies = useCollectionService<ZombieModel>("Zombie")
+    const zombies = useCollectionService<ZombieModel>("Zombie")
 
-	return (
-		{
+    return (
+        {
             zombies.map((zombie) =>
                 <ZombieHealthbar model={zombie} />
             )
         }
-	);
+    );
 }
 ```
