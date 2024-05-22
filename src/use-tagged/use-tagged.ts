@@ -12,8 +12,8 @@ import { CollectionService } from "@rbxts/services";
  * ```
  *
  * @param tag The `CollectionService` tag name to filter against.
- * @type T An optional subtype of `Instance` to cast the tagged children to.
  * @returns A stateful list of `Instance` matching the provided `tag`.
+ * @template T An optional subtype of `Instance` to cast the tagged children to.
  */
 export function useTagged<T extends Instance = Instance>(tag: string): readonly T[] {
 	const [instances, setInstances] = useState(() => CollectionService.GetTagged(tag));
