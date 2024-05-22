@@ -12,6 +12,7 @@ export * from "./use-async-effect";
 export * from "./use-binding-listener";
 export * from "./use-binding-state";
 export * from "./use-camera";
+export * from "./use-collection-service";
 export * from "./use-composed-ref";
 export * from "./use-debounce-callback";
 export * from "./use-debounce-effect";
