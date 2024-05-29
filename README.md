@@ -17,7 +17,7 @@ Check out some featured hooks:
 
 -   [🦾 `useMotor`](src/use-motor/) - Creates a motor and returns a binding, a function to set the goal, and a motor API
 -   [⏱️ `useAsync`](src/use-async/) - A hook that runs an async function and returns the result and status
--   [⚙️ `useProperty`](src/use-property/) - Tracks the state of one or more instance properties without refs
+-   [⚙️ `useTagged`](src/use-tagged/) - Tracks and returns a list of all instances with the given tag
 
 This package also exports some useful utilities:
 
