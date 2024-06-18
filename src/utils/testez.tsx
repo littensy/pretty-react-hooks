@@ -1,5 +1,3 @@
-_G.__ROACT_17_MOCK_SCHEDULER__ = true;
-
 import React, { useRef } from "@rbxts/react";
 import { act, createLegacyRoot } from "@rbxts/react-roblox";
 
