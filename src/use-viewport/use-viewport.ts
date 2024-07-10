@@ -1,6 +1,5 @@
 import { useBinding, useEffect } from "@rbxts/react";
 import { useCamera } from "../use-camera";
-import { useEventListener } from "../use-event-listener";
 
 /**
  * Returns the current viewport size of the camera.
