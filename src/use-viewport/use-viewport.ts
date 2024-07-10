@@ -1,4 +1,4 @@
-import { useBinding, useEffect, useMemo } from "@rbxts/react";
+import { useBinding, useEffect } from "@rbxts/react";
 import { useCamera } from "../use-camera";
 import { useEventListener } from "../use-event-listener";
 
@@ -9,21 +9,20 @@ import { useEventListener } from "../use-event-listener";
  */
 export function useViewport(listener?: (viewport: Vector2) => void) {
 	const camera = useCamera();
-	const [viewport, setViewport] = useBinding(Vector2.one);
-
-	useEventListener(camera?.GetPropertyChangedSignal("ViewportSize"), () => {
-		setViewport(camera.ViewportSize);
-		listener?.(camera.ViewportSize);
-	});
-
-	useMemo(() => {
-		if (camera) {
-			setViewport(camera.ViewportSize);
-		}
-	}, [camera]);
+	const [viewport, setViewport] = useBinding(camera.ViewportSize);
 
 	useEffect(() => {
-		listener?.(viewport.getValue());
+		const connection = camera.GetPropertyChangedSignal("ViewportSize").Connect(() => {
+			setViewport(camera.ViewportSize);
+			listener?.(camera.ViewportSize);
+		});
+
+		setViewport(camera.ViewportSize);
+		listener?.(camera.ViewportSize);
+
+		return () => {
+			connection.Disconnect();
+		};
 	}, [camera]);
 
 	return viewport;
