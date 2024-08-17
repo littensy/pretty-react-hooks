@@ -17,22 +17,14 @@ Applies spring animations to the given value, and updates the goal with the late
 
 ### 📘 Example
 
-A button that fades in and out when hovered.
+A button changes to the colour of its props.
 
 ```tsx
 function Button() {
-	const [springValue, setSpringValue] = useBinding(0)
-	const hover = useSpring(springValue, config.spring.stiff);
+	const color = useSpring(props.color, config.spring.stiff);
 
 	return (
-		<textbutton
-			Event={{
-				MouseEnter: () => setSpringValue(1),
-				MouseLeave: () => setSpringValue(0),
-			}}
-			Size={new UDim2(0, 100, 0, 100)}
-			BackgroundTransparency={hover.map((t) => lerp(0.8, 0.5, t))}
-		/>
+		<textbutton Size={new UDim2(0, 100, 0, 100)} BackgroundColor3={color} />
 	);
 }
 ```
