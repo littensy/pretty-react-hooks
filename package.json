@@ -47,9 +47,9 @@
 		"typescript": "^5.1.6"
 	},
 	"dependencies": {
-		"@rbxts/ripple": "*",
 		"@rbxts/react": "*",
 		"@rbxts/react-roblox": "*",
+		"@rbxts/ripple": "*",
 		"@rbxts/services": "^1.5.1",
 		"@rbxts/set-timeout": "^1.1.2"
 	}
