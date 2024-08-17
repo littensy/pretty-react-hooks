@@ -26,6 +26,7 @@ export * from "./use-motion";
 export * from "./use-mount-effect";
 export * from "./use-mouse";
 export * from "./use-previous";
+export * from "./use-spring";
 export * from "./use-tagged";
 export * from "./use-throttle-callback";
 export * from "./use-throttle-effect";
