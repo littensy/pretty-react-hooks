@@ -1,9 +1,6 @@
-export * from "@rbxts/flipper";
-
 export * from "./utils/binding";
 export * from "./utils/hoarcekat";
 export * from "./utils/math";
-export * from "./utils/motor";
 export * from "./utils/testez";
 
 export * from "./use-async";
@@ -25,7 +22,7 @@ export * from "./use-key-press";
 export * from "./use-latest";
 export * from "./use-latest-callback";
 export * from "./use-lifetime";
-export * from "./use-motor";
+export * from "./use-motion";
 export * from "./use-mount-effect";
 export * from "./use-mouse";
 export * from "./use-previous";
