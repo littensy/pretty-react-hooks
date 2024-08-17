@@ -20,8 +20,8 @@ Applies spring animations to the given value, and updates the goal with the late
 A button changes to the colour of its props.
 
 ```tsx
-function Button() {
-	const color = useSpring(props.color, config.spring.stiff);
+function Button({ color }: Props) {
+	const color = useSpring(color, config.spring.stiff);
 
 	return (
 		<textbutton Size={new UDim2(0, 100, 0, 100)} BackgroundColor3={color} />
