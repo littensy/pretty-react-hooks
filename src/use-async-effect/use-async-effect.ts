@@ -7,7 +7,7 @@ import { useEffect } from "@rbxts/react";
  * @param effect The async effect to run.
  * @param deps The dependencies to run the effect on.
  */
-export function useAsyncEffect(effect: () => Promise<unknown>, deps?: unknown[]) {
+export function useAsyncEffect(effect: () => Promise<any>, deps?: unknown[]) {
 	useEffect(() => {
 		const promise = effect();
 
