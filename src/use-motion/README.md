@@ -26,8 +26,8 @@ function Button() {
 	return (
 		<textbutton
 			Event={{
-				MouseEnter: () => motion.spring(1, config.spring.stiff),
-				MouseLeave: () => motion.spring(0, config.spring.stiff),
+				MouseEnter: () => hoverMotor.spring(1, config.spring.stiff),
+				MouseLeave: () => hoverMotor.spring(0, config.spring.stiff),
 			}}
 			Size={new UDim2(0, 100, 0, 100)}
 			BackgroundTransparency={hover.map((t) => lerp(0.8, 0.5, t))}

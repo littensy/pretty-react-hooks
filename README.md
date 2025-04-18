@@ -15,7 +15,7 @@ If you find a bug or have a feature request, please [open an issue](https://gith
 
 Check out some featured hooks:
 
--   [🦾 `useMotor`](src/use-motor/) - Creates a motor and returns a binding, a function to set the goal, and a motor API
+-   [🦾 `useMotion`](src/use-motion/) - Creates a memoized Motion object set to the given initial value. Returns a binding that updates with the Motion, along with the Motion object.
 -   [⏱️ `useAsync`](src/use-async/) - A hook that runs an async function and returns the result and status
 -   [⚙️ `useTagged`](src/use-tagged/) - Tracks and returns a list of all instances with the given tag
 
