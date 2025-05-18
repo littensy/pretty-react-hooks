@@ -16,7 +16,8 @@ interface EventListenerOptions {
 type EventLike<T extends Callback = Callback> =
 	| { Connect(callback: T): ConnectionLike }
 	| { connect(callback: T): ConnectionLike }
-	| { subscribe(callback: T): ConnectionLike };
+	| { subscribe(callback: T): ConnectionLike }
+	| ((callback: T) => ConnectionLike);
 
 type ConnectionLike = { Disconnect(): void } | { disconnect(): void } | (() => void);
 
@@ -32,6 +33,8 @@ const connect = (event: EventLike, callback: Callback): ConnectionLike => {
 			}
 		});
 		return connection;
+	} else if (typeIs(event, "function")) {
+		return event(callback);
 	} else if ("Connect" in event) {
 		return event.Connect(callback);
 	} else if ("connect" in event) {
