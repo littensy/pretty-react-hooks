@@ -33,14 +33,14 @@ const connect = (event: EventLike, callback: Callback): ConnectionLike => {
 			}
 		});
 		return connection;
+	} else if (typeIs(event, "function")) {
+		return event(callback);
 	} else if ("Connect" in event) {
 		return event.Connect(callback);
 	} else if ("connect" in event) {
 		return event.connect(callback);
 	} else if ("subscribe" in event) {
 		return event.subscribe(callback);
-	} else if (typeOf(event) === "function") {
-		return event(callback);
 	} else {
 		throw "Event-like object does not have a supported connect method.";
 	}
