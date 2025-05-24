@@ -15,12 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@v4
         with:
-          version: 9.1.2
-
-      - name: Install Dependencies
-        run: pnpm install
+          run_install: true
+      - uses: CompeyDev/setup-rokit@v0.1.2
 
       - name: Run ESLint
         run: pnpm eslint src
