@@ -19,15 +19,20 @@ export function useTagged<T extends Instance = Instance>(tag: string): readonly 
 	const [instances, setInstances] = useState(() => CollectionService.GetTagged(tag));
 
 	useEventListener(CollectionService.GetInstanceAddedSignal(tag), (instance) => {
-		const nextInstances = table.clone(instances);
-		nextInstances.push(instance);
-		setInstances(nextInstances);
+		setInstances((instances) => {
+			const nextInstances = table.clone(instances);
+			nextInstances.push(instance);
+			return nextInstances;
+		});
 	});
 
 	useEventListener(CollectionService.GetInstanceRemovedSignal(tag), (instance) => {
-		const nextInstances = table.clone(instances);
-		nextInstances.unorderedRemove(instances.indexOf(instance));
-		setInstances(nextInstances);
+		setInstances((instances) => {
+			const nextInstances = table.clone(instances);
+			const index = nextInstances.indexOf(instance);
+			nextInstances.remove(index);
+			return nextInstances;
+		});
 	});
 
 	return instances as T[];
