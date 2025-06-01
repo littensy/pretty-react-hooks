@@ -38,11 +38,12 @@ export function useInterval(callback: () => void, delay?: BindingOrValue<number>
 			callbackMemo();
 		}
 		cancel.current = task.spawn(() => {
+			// eslint-disable-next-line no-constant-condition
 			while (true) {
 				task.wait(getBindingValue(delay));
 				callbackMemo();
 			}
-		})
+		});
 		return clear;
 	}, [delay]);
 
