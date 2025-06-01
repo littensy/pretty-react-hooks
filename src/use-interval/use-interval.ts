@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from "@rbxts/react";
-import { setInterval } from "@rbxts/set-timeout";
 import { useLatestCallback } from "../use-latest-callback";
+import { BindingOrValue, getBindingValue } from "../utils/binding";
 
 export interface UseIntervalOptions {
 	/**
@@ -19,14 +19,15 @@ export interface UseIntervalOptions {
  * @param options The options for the interval.
  * @returns A function that clears the interval.
  */
-export function useInterval(callback: () => void, delay?: number, options: UseIntervalOptions = {}) {
+export function useInterval(callback: () => void, delay?: BindingOrValue<number>, options: UseIntervalOptions = {}) {
 	const { immediate = false } = options;
 
 	const callbackMemo = useLatestCallback(callback);
-	const cancel = useRef<() => void>();
+	const cancel = useRef<thread>();
 
 	const clear = useCallback(() => {
-		cancel.current?.();
+		if (!cancel.current) return;
+		task.cancel(cancel.current);
 	}, []);
 
 	useEffect(() => {
@@ -36,7 +37,12 @@ export function useInterval(callback: () => void, delay?: number, options: UseIn
 		if (immediate) {
 			callbackMemo();
 		}
-		cancel.current = setInterval(callbackMemo, delay);
+		cancel.current = task.spawn(() => {
+			while (true) {
+				task.wait(getBindingValue(delay));
+				callbackMemo();
+			}
+		})
 		return clear;
 	}, [delay]);
 
